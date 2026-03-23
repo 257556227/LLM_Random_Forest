@@ -12,6 +12,28 @@
 |:---|:---|:---|
 | 数据下载 | download_datasets.py | 下载 sklearn 数据集脚本 |
 | 数据集 | DeLTa-main/example_datasets/california_housing/ | 刚补全的回归数据集 |
+| 优化参数 | --top_k_leaves N | 增加扩展叶子数量 |
+| 优化参数 | --base_max_depth N | 调整基线树深度 |
+
+---
+
+## 可复现的优化命令
+
+### bank 最佳配置（超越 deeper_rf）
+```bash
+cd DeLTa-main
+conda activate py310
+python run_leaf_expansion_mnist.py --dataset bank --mode llm_guided --relation_source mock_llm --top_k_leaves 5 --save_summary
+# 结果：89.04% vs deeper_rf 88.73%
+```
+
+### mnist 最佳配置（大幅提升）
+```bash
+cd DeLTa-main
+conda activate py310
+python run_leaf_expansion_mnist.py --dataset mnist --mode llm_guided --relation_source mock_llm --base_max_depth 4 --save_summary
+# 结果：61.68% vs baseline 49.53%
+```
 
 ---
 
