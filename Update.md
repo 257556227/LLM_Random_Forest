@@ -12,10 +12,10 @@
 | **adult** | 原始 | **84.93%** | 84.56% | ✅ |
 | **car** | 原始 | **82.57%** | 79.61% | ✅ |
 | **mnist** | base_max_depth=4 | **61.68%** | 81.64% | 接近中 |
-| house_16H_reg | top_k_leaves=5 | RMSE 42603 | 38943 | 改善 |
+| house_16H_reg | top_k_leaves=7 | RMSE 42592 | 38943 | 改善 |
 | credit-g | - | 71.71% | 73.14% | 反例 |
 | jannis | - | 56.50% | 63.24% | 反例 |
-| california_housing | - | 0.7024 | 0.6508 | 反例 |
+| california_housing | top_k_leaves=5 | RMSE 0.7109 | 0.6508 | 改善 |
 
 ---
 
@@ -49,11 +49,17 @@
 cd DeLTa-main
 conda activate py310
 
-# bank 最佳配置
+# bank 最佳配置（超越 deeper_rf）
 python run_leaf_expansion_mnist.py --dataset bank --mode llm_guided --relation_source mock_llm --top_k_leaves 5 --save_summary
 
 # mnist 最佳配置
 python run_leaf_expansion_mnist.py --dataset mnist --mode llm_guided --relation_source mock_llm --base_max_depth 4 --save_summary
+
+# house_16H_reg 最佳配置
+python run_leaf_expansion_mnist.py --dataset house_16H_reg --mode llm_guided --relation_source mock_llm --top_k_leaves 7 --save_summary
+
+# california_housing 最佳配置
+python run_leaf_expansion_mnist.py --dataset california_housing --mode llm_guided --relation_source mock_llm --top_k_leaves 5 --save_summary
 ```
 
 ---
