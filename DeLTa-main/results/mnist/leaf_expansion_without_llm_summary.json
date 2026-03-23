@@ -1,41 +1,47 @@
 {
   "prototype": "Leaf Expansion without LLM",
   "selected_leaf_ids": [
-    8,
-    7,
-    11
+    12,
+    11,
+    14
   ],
   "expanded_leaf_count": 3,
   "ranked_features_by_leaf": {
-    "8": [
-      4,
-      1,
-      5,
-      6,
-      7,
-      2,
-      0,
-      3
-    ],
-    "7": [
-      4,
-      1,
-      2,
-      7,
-      6,
-      3,
-      0,
-      5
+    "12": [
+      354,
+      326,
+      630,
+      657,
+      353,
+      629,
+      574,
+      601,
+      602,
+      327
     ],
     "11": [
-      4,
-      1,
-      6,
-      7,
-      5,
-      0,
-      2,
-      3
+      573,
+      574,
+      575,
+      576,
+      546,
+      270,
+      577,
+      545,
+      298,
+      602
+    ],
+    "14": [
+      488,
+      484,
+      354,
+      429,
+      186,
+      487,
+      456,
+      572,
+      629,
+      522
     ]
   },
   "top_k_features_to_try": 3,
@@ -44,15 +50,13 @@
   "local_max_leaf_nodes": 2,
   "leaf_selection_strategy": "impurity_mass",
   "selected_expansion_features_by_leaf": {
-    "8": 1,
-    "7": 1,
-    "11": 6
+    "12": 326,
+    "11": 573,
+    "14": 484
   },
-  "metric_name": "rmse",
-  "baseline_rmse": 0.7156288448591442,
-  "expanded_rmse": 0.7146820662155001,
-  "baseline_r2": 0.35253456013193585,
-  "expanded_r2": 0.35424662344765534,
-  "dataset": "california_housing",
-  "task_type": "regression"
+  "metric_name": "accuracy",
+  "baseline_accuracy": 0.5957,
+  "expanded_accuracy": 0.6135,
+  "dataset": "mnist",
+  "task_type": "multiclass"
 }
