@@ -12,6 +12,11 @@
 | 2026-03-11 | 传统 DeLTa 训练 | `DELTA_DATASETS=credit-g python run.py --num_answers 10` | 已完成 | 产出 `RF_md15_ml20_tree20_full_cart_*.npy` |
 | 2026-03-11 | 传统 DeLTa 融合 | `DELTA_DATASETS=credit-g python run_ensemble.py --n_ensemble 0` | `0.7342857142857143` | `eta = 0.1` |
 | 2026-03-11 | 正式协议摘要 | `evaluate_credit_g_formal_protocol.py` | 已生成正式协议 | `deeper_rf = 0.7314`，`online_llm = 0.7171` |
+| 2026-03-23 | 网格调参 | depth=3, leaves=10, features=3 | `0.6971` | worse than baseline |
+| 2026-03-23 | 网格调参 | depth=4, leaves=10, features=5 | `0.6971` | worse than baseline |
+| 2026-03-23 | 网格调参 | depth=3, leaves=15, features=7 | `0.7171` | same as baseline |
+| 2026-03-23 | 网格调参 | depth=5, leaves=20, features=5 | `0.7000` | worse than baseline |
+| 2026-03-23 | 网格调参 | depth=4, leaves=5, features=3 | `0.6971` | worse than baseline |
 
 ## 当前已确认入口
 - 数据配置：`DeLTa-main/dataset_config.py`

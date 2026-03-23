@@ -12,6 +12,10 @@
 | 2026-03-11 | 传统 DeLTa 融合 | `DELTA_DATASETS=jannis python run_ensemble.py --n_ensemble 0` | `0.6574908938914432` | 当前仍是 jannis 最强主链结果 |
 | 2026-03-11 | 正式协议摘要 | `evaluate_jannis_formal_protocol.py` | 已生成正式协议 | `online_llm` 强于三组原型，但仍低于 `Deeper RF / traditional RF / traditional DeLTa` |
 | 2026-03-11 | 调优小扫 | `impurity / sample_count / top4 / topk4` | 默认配置最优或并列最优 | `impurity` 更差，`sample_count / top4 / topk4` 都未超过默认 |
+| 2026-03-23 | 网格调参 | depth=3, leaves=10, features=3 | `0.5667` | same as baseline |
+| 2026-03-23 | 网格调参 | depth=4, leaves=15, features=5 | `0.5849` | best so far |
+| 2026-03-23 | 网格调参 | depth=5, leaves=20, features=5 | `0.6160` | worse than baseline |
+| 2026-03-23 | 网格调参 | depth=6, leaves=25, features=5 | `0.5806` | worse |
 
 ## 当前已确认入口
 - 数据配置：`DeLTa-main/dataset_config.py`
