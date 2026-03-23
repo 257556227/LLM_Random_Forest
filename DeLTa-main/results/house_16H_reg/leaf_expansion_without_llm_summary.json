@@ -1,0 +1,64 @@
+{
+  "prototype": "Leaf Expansion without LLM",
+  "selected_leaf_ids": [
+    5,
+    10,
+    12
+  ],
+  "expanded_leaf_count": 3,
+  "ranked_features_by_leaf": {
+    "5": [
+      0,
+      15,
+      12,
+      2,
+      13,
+      11,
+      7,
+      5,
+      14,
+      10
+    ],
+    "10": [
+      0,
+      15,
+      10,
+      14,
+      3,
+      2,
+      11,
+      7,
+      5,
+      4
+    ],
+    "12": [
+      0,
+      15,
+      13,
+      10,
+      2,
+      11,
+      14,
+      5,
+      7,
+      3
+    ]
+  },
+  "top_k_features_to_try": 3,
+  "local_feature_subset_size": 1,
+  "local_max_depth": 1,
+  "local_max_leaf_nodes": 2,
+  "leaf_selection_strategy": "impurity_mass",
+  "selected_expansion_features_by_leaf": {
+    "5": 15,
+    "10": 0,
+    "12": 0
+  },
+  "metric_name": "rmse",
+  "baseline_rmse": 43327.97661981514,
+  "expanded_rmse": 42303.109761695276,
+  "baseline_r2": 0.3317124125311788,
+  "expanded_r2": 0.36295345241062327,
+  "dataset": "house_16H_reg",
+  "task_type": "regression"
+}

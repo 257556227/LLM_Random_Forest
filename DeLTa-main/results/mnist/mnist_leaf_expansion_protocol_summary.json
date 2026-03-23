@@ -1,0 +1,88 @@
+{
+  "protocol_name": "mnist_leaf_expansion_four_way_v1",
+  "dataset": "mnist",
+  "generated_at_utc": "2026-03-08T03:54:29.137851+00:00",
+  "strict_same_metric_protocol_ready": false,
+  "protocol_status": "artifact_inventory_ready_but_not_same_metric_rerun",
+  "experiments": {
+    "baseline_rf": {
+      "label": "Baseline RF",
+      "metric_scope": "delta_mainline_fused_eval",
+      "source_file": "results/mnist/e_RF_md8_ml20_tree3_mnist_cart_9.log",
+      "config": {
+        "md": 8,
+        "ml": 20,
+        "tree": 3,
+        "n_ensemble": 9,
+        "eta": 0.2
+      },
+      "rf_accuracy_mean": 0.6908,
+      "rf_auc_mean": 0.9418715976236627,
+      "fused_accuracy_mean": 0.9153,
+      "fused_auc_mean": 0.9909697430014666,
+      "eta": 0.2
+    },
+    "deeper_rf": {
+      "label": "Deeper RF",
+      "metric_scope": "delta_mainline_fused_eval",
+      "source_file": "results/mnist/e_RF_md20_ml100_tree15_mnist_cart_9.log",
+      "config": {
+        "md": 20,
+        "ml": 100,
+        "tree": 15,
+        "n_ensemble": 9
+      },
+      "rf_accuracy_mean": 0.9025,
+      "rf_auc_mean": 0.9915450562828955,
+      "fused_accuracy_mean": 0.9421,
+      "fused_auc_mean": 0.9966054487412774,
+      "eta": null
+    },
+    "without_llm": {
+      "label": "Leaf Expansion without LLM",
+      "metric_scope": "leaf_expansion_single_model_eval",
+      "source_file": "results/mnist/leaf_expansion_without_llm_summary.json",
+      "prototype": "Leaf Expansion without LLM",
+      "baseline_accuracy": 0.4953,
+      "expanded_accuracy": 0.5413,
+      "selected_leaf_ids": [
+        10,
+        8,
+        9
+      ],
+      "expanded_leaf_count": 3,
+      "relation_source": "without_llm",
+      "dataset": "mnist",
+      "task_type": "multiclass"
+    },
+    "llm_guided": {
+      "label": "LLM-Guided Leaf Expansion",
+      "metric_scope": "leaf_expansion_single_model_eval",
+      "source_file": "results/mnist/llm_guided_leaf_expansion_summary.json",
+      "prototype": "LLM-Guided Leaf Expansion",
+      "baseline_accuracy": 0.4953,
+      "expanded_accuracy": 0.5603,
+      "selected_leaf_ids": [
+        10,
+        8,
+        9
+      ],
+      "expanded_leaf_count": 3,
+      "relation_source": "mock_llm",
+      "dataset": "mnist",
+      "task_type": "multiclass"
+    }
+  },
+  "comparisons": {
+    "delta_mainline_fused_gain_deeper_minus_baseline": 0.0268,
+    "leaf_expansion_gain_without_llm": 0.046,
+    "leaf_expansion_gain_llm_guided": 0.065,
+    "leaf_expansion_extra_gain_llm_minus_without": 0.019
+  },
+  "notes": [
+    "当前四组协议已经有统一汇总产物，但还不是严格同口径复跑后的最终协议。",
+    "Baseline RF 与 Deeper RF 来自 DeLTa 主链的 fused eval；without_llm 与 llm_guided 来自叶子扩展原型的 single-model eval。",
+    "因此这份摘要当前用于阶段一收口与产物盘点，不应用来直接声明最终 apples-to-apples 结论。",
+    "下一步应该把四组实验迁移到同一评估协议下重跑，再决定是否把 strict_same_metric_protocol_ready 改为 true。"
+  ]
+}

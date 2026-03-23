@@ -1,0 +1,83 @@
+{
+  "protocol_name": "car_leaf_expansion_formal_protocol_v1",
+  "dataset": "car",
+  "generated_at_utc": "2026-03-11T14:33:18.124064+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/car/leaf_expansion_without_llm_summary.json",
+      "sample_count": 608,
+      "test_accuracy": 0.7631578947368421,
+      "max_depth": 3
+    },
+    "deeper_rf": {
+      "source_mode": "car depth=4 random_forest same-metric recompute",
+      "sample_count": 608,
+      "test_accuracy": 0.7960526315789473,
+      "test_auc": 0.9673011428583602,
+      "n_estimators": 100,
+      "max_depth": 4
+    },
+    "without_llm": {
+      "source_file": "results/car/leaf_expansion_without_llm_summary.json",
+      "sample_count": 608,
+      "test_accuracy": 0.8042763157894737,
+      "selected_leaf_ids": [
+        6,
+        7,
+        8
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "mock_llm": {
+      "source_file": "results/car/llm_guided_leaf_expansion_summary.json",
+      "sample_count": 608,
+      "test_accuracy": 0.7911184210526315,
+      "selected_leaf_ids": [
+        6,
+        7,
+        8
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "online_llm": {
+      "source_file": "results/car/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 608,
+      "test_accuracy": 0.8256578947368421,
+      "selected_leaf_ids": [
+        6,
+        7,
+        8
+      ],
+      "leaf_selection_strategy": "impurity_mass",
+      "llm_model": null
+    },
+    "traditional_rf": {
+      "source_file": "results/car/car_md10_ml10_tree20.npy",
+      "sample_count": 608,
+      "test_accuracy": 0.8174342105263158,
+      "test_auc": 0.9747667970547863
+    },
+    "traditional_delta": {
+      "source_file": "results/car/e_RF_md10_ml10_tree20_car_cart_0.log",
+      "sample_count": null,
+      "test_accuracy": 0.8470394736842105,
+      "test_auc": 0.9795343672295469,
+      "eta": 0.044
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_prototype_baseline": 0.0411,
+    "online_llm_minus_mock_llm": 0.0345,
+    "online_llm_minus_without_llm": 0.0214,
+    "online_llm_minus_deeper_rf": 0.0296,
+    "online_llm_minus_traditional_rf": 0.0082,
+    "online_llm_minus_traditional_delta": -0.0214
+  },
+  "notes": [
+    "这份摘要把 car 的 leaf expansion 原型、depth=4 Deeper RF，以及传统 DeLTa/RF 主链结果放到同一张协议表里。",
+    "car 是低维纯类别多分类数据，因此这份正式协议特别适合沉淀类别值解释、target-conditioned prompt 与候选叶子策略的通用化经验。",
+    "traditional_rf 来自 run_randforest.py 的主链 .npy；traditional_delta 来自 train.py + ensemble.py 的融合日志。"
+  ]
+}

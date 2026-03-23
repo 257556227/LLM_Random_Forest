@@ -1,0 +1,52 @@
+{
+  "protocol_name": "car_leaf_expansion_same_metric_v1",
+  "dataset": "car",
+  "generated_at_utc": "2026-03-11T14:33:14.219462+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": false,
+  "notes": [
+    "这份摘要聚焦 car 上 leaf expansion 原型第一轮结果。",
+    "当前 baseline 来自同一棵 depth=3 原型树，不是 DeLTa 主链 RF baseline。",
+    "car 是低维纯类别多分类数据，当前更关注 online 是否超过 mock_llm，而不是先追求大幅超过传统主链。"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/car/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.7631578947368421
+    },
+    "without_llm": {
+      "source_file": "results/car/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.8042763157894737,
+      "selected_leaf_ids": [
+        6,
+        7,
+        8
+      ]
+    },
+    "mock_llm": {
+      "source_file": "results/car/llm_guided_leaf_expansion_summary.json",
+      "test_accuracy": 0.7911184210526315,
+      "selected_leaf_ids": [
+        6,
+        7,
+        8
+      ]
+    },
+    "online_llm": {
+      "source_file": "results/car/llm_guided_leaf_expansion_online_summary.json",
+      "test_accuracy": 0.8256578947368421,
+      "selected_leaf_ids": [
+        6,
+        7,
+        8
+      ],
+      "llm_model": null
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_baseline": 0.0411,
+    "mock_llm_minus_without_llm": -0.0132,
+    "online_llm_minus_mock_llm": 0.0345,
+    "online_llm_minus_without_llm": 0.0214
+  }
+}

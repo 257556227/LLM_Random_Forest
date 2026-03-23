@@ -1,0 +1,38 @@
+{
+  "task_type": "binclass",
+  "num_classes": 2,
+  "n_num_features": 6,
+  "n_cat_features": 8,
+  "train_size": 26048,
+  "val_size": 6513,
+  "test_size": 16281,
+  "task_intro": "This dataset predicts whether a person's income exceeds 50K per year based on census and demographic attributes.",
+  "feature_intro": {
+    "num": {
+      "age": "age in years",
+      "fnlwgt": "final sampling weight",
+      "education-num": "number of years of education",
+      "capital-gain": "capital gains in the year",
+      "capital-loss": "capital losses in the year",
+      "hours-per-week": "hours worked per week"
+    },
+    "cat": {
+      "workclass": "employment type or work class",
+      "education": "highest education category",
+      "marital-status": "marital status category",
+      "occupation": "occupation type",
+      "relationship": "household relationship status",
+      "race": "race category",
+      "sex": "sex category",
+      "native-country": "country of origin"
+    }
+  },
+  "target_intro": {
+    ">50K": "income is less than or equal to 50K per year",
+    "<=50K": "income is greater than 50K per year",
+    "income is greater than 50K per year": "income is less than or equal to 50K per year",
+    "income is less than or equal to 50K per year": "income is greater than 50K per year"
+  },
+  "source": "https://www.openml.org/d/1590",
+  "openml_id": 1590
+}

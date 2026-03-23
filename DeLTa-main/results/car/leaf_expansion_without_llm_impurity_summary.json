@@ -1,0 +1,46 @@
+{
+  "prototype": "Leaf Expansion without LLM",
+  "baseline_accuracy": 0.7631578947368421,
+  "expanded_accuracy": 0.8042763157894737,
+  "selected_leaf_ids": [
+    7,
+    6,
+    8
+  ],
+  "expanded_leaf_count": 3,
+  "ranked_features_by_leaf": {
+    "7": [
+      2,
+      0,
+      4,
+      1,
+      3,
+      5
+    ],
+    "6": [
+      2,
+      0,
+      1,
+      4,
+      3,
+      5
+    ],
+    "8": [
+      0,
+      2,
+      4,
+      3,
+      1,
+      5
+    ]
+  },
+  "top_k_features_to_try": 3,
+  "leaf_selection_strategy": "impurity",
+  "selected_expansion_features_by_leaf": {
+    "7": 2,
+    "6": 1,
+    "8": 0
+  },
+  "dataset": "car",
+  "task_type": "multiclass"
+}

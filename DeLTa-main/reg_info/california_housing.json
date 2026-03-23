@@ -1,0 +1,10 @@
+{
+  "name": "california_housing",
+  "desc": "California housing regression dataset, 8 numeric features, regression target.",
+  "source": "sklearn.datasets.fetch_california_housing",
+  "n_num_features": 8,
+  "n_cat_features": 0,
+  "train_size": 13209,
+  "val_size": 3303,
+  "test_size": 4128
+}

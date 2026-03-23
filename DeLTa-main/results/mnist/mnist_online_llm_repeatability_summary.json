@@ -1,0 +1,45 @@
+{
+  "generated_at_utc": "2026-03-08T10:13:37.124378+00:00",
+  "dataset": "mnist",
+  "repeats": 5,
+  "success_count": 5,
+  "mock_llm_accuracy": 0.5603,
+  "runs": [
+    {
+      "run_index": 1,
+      "status": "success",
+      "test_accuracy": 0.5622,
+      "llm_model": "gpt-4o"
+    },
+    {
+      "run_index": 2,
+      "status": "success",
+      "test_accuracy": 0.5622,
+      "llm_model": "gpt-4o"
+    },
+    {
+      "run_index": 3,
+      "status": "success",
+      "test_accuracy": 0.5622,
+      "llm_model": "gpt-4o"
+    },
+    {
+      "run_index": 4,
+      "status": "success",
+      "test_accuracy": 0.5622,
+      "llm_model": "gpt-4o"
+    },
+    {
+      "run_index": 5,
+      "status": "success",
+      "test_accuracy": 0.5622,
+      "llm_model": "gpt-4o"
+    }
+  ],
+  "online_accuracy_mean": 0.5622,
+  "online_accuracy_min": 0.5622,
+  "online_accuracy_max": 0.5622,
+  "online_accuracy_std": 0.0,
+  "mean_minus_mock": 0.0019,
+  "wins_over_mock_count": 5
+}

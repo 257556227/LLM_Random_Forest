@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-03-10T16:31:55.012811+00:00",
+  "dataset": "bank",
+  "relation_source": "online_llm",
+  "status": "success",
+  "summary_file": "results/bank/llm_guided_leaf_expansion_online_impurity_summary.json",
+  "baseline_accuracy": 0.8886431493973239,
+  "test_accuracy": 0.8900807254229791,
+  "llm_model": "gpt-4o",
+  "leaf_selection_strategy": "impurity",
+  "stdout_preview": "the one that only has larger raw magnitude differences.\\nFor example, compare age vs duration style trade-offs explicitly instead of always preferring recent-contact features.\\nPrioritize customer-contact features such as call duration, campaign history, previous outcome, contact channel, and month when they align with the leaf statistics.\\nAlso use customer profile and financial context such as balance, housing, loan, job, education, and age when they help isolate likely subscribers or non-subscribers.\\nReturn ONLY a JSON object with key ranked_features containing a ranked list of feature ids.\\nDo not add markdown fences, explanation, or any extra keys.\"\n  },\n  \"llm_raw_responses\": {\n    \"14\": \"{\\n    \\\"ranked_features\\\": [8, 9, 2, 7, 3, 1, 0, 4, 14, 5]\\n}\",\n    \"10\": \"{\\n    \\\"ranked_features\\\": [3, 5, 2, 15, 6, 1, 0, 7, 4, 9]\\n}\",\n    \"6\": \"{\\n    \\\"ranked_features\\\": [3, 15, 4, 6, 1, 5, 14, 2, 0, 7]\\n}\"\n  },\n  \"llm_model\": \"gpt-4o\",\n  \"dataset\": \"bank\",\n  \"task_type\": \"binclass\"\n}\n"
+}

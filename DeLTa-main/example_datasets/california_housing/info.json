@@ -1,0 +1,23 @@
+{
+  "name": "california_housing",
+  "desc": "California housing regression dataset, 8 numeric features, regression target.",
+  "source": "sklearn.datasets.fetch_california_housing",
+  "n_num_features": 8,
+  "n_cat_features": 0,
+  "train_size": 13209,
+  "val_size": 3303,
+  "test_size": 4128,
+  "task_type": "regression",
+  "n_classes": 1,
+  "num_feature_intro": {
+    "MedInc": "MedInc",
+    "HouseAge": "HouseAge",
+    "AveRooms": "AveRooms",
+    "AveBedrms": "AveBedrms",
+    "Population": "Population",
+    "AveOccup": "AveOccup",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude"
+  },
+  "cat_feature_intro": {}
+}

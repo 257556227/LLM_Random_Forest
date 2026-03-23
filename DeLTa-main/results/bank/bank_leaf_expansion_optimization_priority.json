@@ -1,0 +1,108 @@
+{
+  "generated_at_utc": "2026-03-10T16:15:26.765070+00:00",
+  "dataset": "bank",
+  "goal": "Prioritize which leaf to optimize next so online_llm can try to move from matching mock_llm to exceeding it.",
+  "baseline_test_accuracy": 0.898595598805706,
+  "online_test_accuracy": 0.8889748977109366,
+  "mock_test_accuracy": 0.8889748977109366,
+  "selected_leaf_ids": [
+    5,
+    11,
+    13
+  ],
+  "priority_targets": [
+    {
+      "priority_score": 0.0,
+      "leaf_id": 5,
+      "sample_count_train": 30388,
+      "sample_count_test": 7599,
+      "predicted_class": 0,
+      "online_selected_feature": 5,
+      "online_selected_feature_name": "pdays",
+      "online_local_test_accuracy": 0.9399,
+      "mock_selected_feature": 7,
+      "mock_selected_feature_name": "job",
+      "mock_local_test_accuracy": 0.9399,
+      "best_candidate_feature": 1,
+      "best_candidate_feature_name": "balance",
+      "best_candidate_local_test_accuracy": 0.9399,
+      "online_to_best_local_gap": 0.0,
+      "estimated_global_accuracy_gain": 0.0,
+      "top3_candidate_features": [
+        1,
+        3,
+        5
+      ],
+      "top3_candidate_feature_names": [
+        "balance",
+        "duration",
+        "pdays"
+      ],
+      "recommended_prompt_focus": "当前在线选择已接近局部最优，优先级较低，可暂不继续写专用 prompt。"
+    },
+    {
+      "priority_score": 0.0,
+      "leaf_id": 11,
+      "sample_count_train": 1966,
+      "sample_count_test": 510,
+      "predicted_class": 0,
+      "online_selected_feature": 0,
+      "online_selected_feature_name": "age",
+      "online_local_test_accuracy": 0.6078,
+      "mock_selected_feature": 0,
+      "mock_selected_feature_name": "age",
+      "mock_local_test_accuracy": 0.6078,
+      "best_candidate_feature": 0,
+      "best_candidate_feature_name": "age",
+      "best_candidate_local_test_accuracy": 0.6078,
+      "online_to_best_local_gap": 0.0,
+      "estimated_global_accuracy_gain": 0.0,
+      "top3_candidate_features": [
+        0,
+        1,
+        5
+      ],
+      "top3_candidate_feature_names": [
+        "age",
+        "balance",
+        "pdays"
+      ],
+      "recommended_prompt_focus": "当前在线选择已接近局部最优，优先级较低，可暂不继续写专用 prompt。"
+    },
+    {
+      "priority_score": 0.0,
+      "leaf_id": 13,
+      "sample_count_train": 1121,
+      "sample_count_test": 287,
+      "predicted_class": 1,
+      "online_selected_feature": 15,
+      "online_selected_feature_name": "poutcome",
+      "online_local_test_accuracy": 0.5749,
+      "mock_selected_feature": 0,
+      "mock_selected_feature_name": "age",
+      "mock_local_test_accuracy": 0.5749,
+      "best_candidate_feature": 5,
+      "best_candidate_feature_name": "pdays",
+      "best_candidate_local_test_accuracy": 0.5749,
+      "online_to_best_local_gap": 0.0,
+      "estimated_global_accuracy_gain": 0.0,
+      "top3_candidate_features": [
+        5,
+        1,
+        3
+      ],
+      "top3_candidate_feature_names": [
+        "pdays",
+        "balance",
+        "duration"
+      ],
+      "recommended_prompt_focus": "当前在线选择已接近局部最优，优先级较低，可暂不继续写专用 prompt。"
+    }
+  ],
+  "summary": {
+    "total_selected_leaf_count": 3,
+    "highest_priority_leaf": 5,
+    "highest_priority_estimated_gain": 0.0,
+    "leaves_with_positive_headroom": 0
+  }
+}

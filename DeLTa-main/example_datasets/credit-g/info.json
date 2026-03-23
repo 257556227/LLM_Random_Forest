@@ -1,0 +1,42 @@
+{
+  "task_type": "binclass",
+  "num_classes": 2,
+  "n_num_features": 7,
+  "n_cat_features": 13,
+  "train_size": 500,
+  "val_size": 150,
+  "test_size": 350,
+  "task_intro": "This dataset predicts whether a credit applicant should be considered good or bad credit risk based on financial history, loan purpose, savings, employment, and personal status information.",
+  "feature_intro": {
+    "num": {
+      "duration": "loan duration in months",
+      "credit_amount": "requested credit amount",
+      "installment_commitment": "installment rate as percentage of disposable income",
+      "residence_since": "years at current residence",
+      "age": "age in years",
+      "existing_credits": "number of existing credits at this bank",
+      "num_dependents": "number of people financially dependent on the applicant"
+    },
+    "cat": {
+      "checking_status": "status of existing checking account",
+      "credit_history": "credit history category",
+      "purpose": "purpose of the requested credit",
+      "savings_status": "status of savings account",
+      "employment": "employment duration category",
+      "personal_status": "personal status and sex category",
+      "other_parties": "other debtors or guarantors",
+      "property_magnitude": "most valuable available property category",
+      "other_payment_plans": "other installment payment plans",
+      "housing": "housing status",
+      "job": "job skill and employment type",
+      "own_telephone": "whether the applicant owns a telephone",
+      "foreign_worker": "whether the applicant is a foreign worker"
+    }
+  },
+  "target_intro": {
+    "good": "credit risk is low and the applicant is likely to repay",
+    "bad": "credit risk is high and the applicant is more likely to default"
+  },
+  "source": "https://www.openml.org/d/31",
+  "openml_id": 31
+}

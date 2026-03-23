@@ -1,0 +1,51 @@
+{
+  "protocol_name": "adult_leaf_expansion_same_metric_v1",
+  "dataset": "adult",
+  "generated_at_utc": "2026-03-10T16:34:43.533294+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": false,
+  "notes": [
+    "这份摘要聚焦 adult 上 leaf expansion 原型第一轮结果。",
+    "当前 baseline 来自同一棵 depth=3 原型树，不是 DeLTa 主链 RF baseline。"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/adult/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.8411645476322093
+    },
+    "without_llm": {
+      "source_file": "results/adult/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.8467538848965052,
+      "selected_leaf_ids": [
+        9,
+        7,
+        11
+      ]
+    },
+    "mock_llm": {
+      "source_file": "results/adult/llm_guided_leaf_expansion_summary.json",
+      "test_accuracy": 0.8440513481972852,
+      "selected_leaf_ids": [
+        9,
+        7,
+        11
+      ]
+    },
+    "online_llm": {
+      "source_file": "results/adult/llm_guided_leaf_expansion_online_summary.json",
+      "test_accuracy": 0.8492721577298692,
+      "selected_leaf_ids": [
+        9,
+        7,
+        11
+      ],
+      "llm_model": null
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_baseline": 0.0056,
+    "mock_llm_minus_without_llm": -0.0027,
+    "online_llm_minus_mock_llm": 0.0052,
+    "online_llm_minus_without_llm": 0.0025
+  }
+}

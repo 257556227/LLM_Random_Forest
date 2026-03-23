@@ -1,0 +1,83 @@
+{
+  "protocol_name": "jannis_leaf_expansion_formal_protocol_v1",
+  "dataset": "jannis",
+  "generated_at_utc": "2026-03-11T14:57:44.261073+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/jannis/leaf_expansion_without_llm_summary.json",
+      "sample_count": 16747,
+      "test_accuracy": 0.5666686570729086,
+      "max_depth": 3
+    },
+    "deeper_rf": {
+      "source_mode": "jannis depth=4 random_forest same-metric recompute",
+      "sample_count": 16747,
+      "test_accuracy": 0.6324117752433271,
+      "test_auc": 0.7947857330563066,
+      "n_estimators": 100,
+      "max_depth": 4
+    },
+    "without_llm": {
+      "source_file": "results/jannis/leaf_expansion_without_llm_summary.json",
+      "sample_count": 16747,
+      "test_accuracy": 0.5639816086463247,
+      "selected_leaf_ids": [
+        8,
+        10,
+        12
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "mock_llm": {
+      "source_file": "results/jannis/llm_guided_leaf_expansion_summary.json",
+      "sample_count": 16747,
+      "test_accuracy": 0.5651161402042156,
+      "selected_leaf_ids": [
+        8,
+        10,
+        12
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "online_llm": {
+      "source_file": "results/jannis/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 16747,
+      "test_accuracy": 0.5814175673254911,
+      "selected_leaf_ids": [
+        8,
+        10,
+        12
+      ],
+      "leaf_selection_strategy": "impurity_mass",
+      "llm_model": null
+    },
+    "traditional_rf": {
+      "source_file": "results/jannis/jannis_md20_ml50_tree20.npy",
+      "sample_count": 16747,
+      "test_accuracy": 0.64877291455186,
+      "test_auc": 0.8229275398118423
+    },
+    "traditional_delta": {
+      "source_file": "results/jannis/e_RF_md20_ml50_tree20_jannis_cart_0.log",
+      "sample_count": null,
+      "test_accuracy": 0.6574908938914432,
+      "test_auc": 0.8289815090145636,
+      "eta": 0.18
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_prototype_baseline": -0.0027,
+    "online_llm_minus_mock_llm": 0.0163,
+    "online_llm_minus_without_llm": 0.0174,
+    "online_llm_minus_deeper_rf": -0.051,
+    "online_llm_minus_traditional_rf": -0.0674,
+    "online_llm_minus_traditional_delta": -0.0761
+  },
+  "notes": [
+    "这份摘要把 jannis 的 leaf expansion 原型、depth=4 Deeper RF，以及传统 DeLTa/RF 主链结果放到同一张协议表里。",
+    "jannis 是高维弱语义多分类数据，因此当前更看重局部统计摘要和候选叶子策略是否足够稳。",
+    "traditional_rf 来自 run_randforest.py 的主链 .npy；traditional_delta 来自 train.py + ensemble.py 的融合日志。"
+  ]
+}

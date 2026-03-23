@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large files (GitHub limit 100MB)
+*.mp4
+*.zip
+
+# Model outputs (keep results)
+# results/
+# Keep important results
+results/**/*.json
+results/**/*.npy
+!results/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NPY data files (too large for Git)
+*.npy

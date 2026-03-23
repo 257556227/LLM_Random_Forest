@@ -1,0 +1,31 @@
+{
+  "generated_at_utc": "2026-03-11T14:54:57.228216+00:00",
+  "dataset": "jannis",
+  "checks": {
+    "dataset_config_exists": true,
+    "prompt_template_exists": true,
+    "llm_rule_exists": true,
+    "dataset_dir_exists": true,
+    "results_dir_exists": false,
+    "precheck_doc_exists": true,
+    "experiment_ledger_exists": true,
+    "module_map_exists": true
+  },
+  "dataset_files": {
+    "N_train.npy": true,
+    "N_val.npy": true,
+    "N_test.npy": true,
+    "C_train.npy": false,
+    "C_val.npy": false,
+    "C_test.npy": false,
+    "y_train.npy": true,
+    "y_val.npy": true,
+    "y_test.npy": true,
+    "info.json": true
+  },
+  "ready_for_first_run": true,
+  "missing_items": [
+    "results/jannis"
+  ],
+  "recommended_next_action": "可以开始 jannis 的第一轮统一入口验证。"
+}

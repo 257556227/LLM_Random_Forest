@@ -1,0 +1,63 @@
+{
+  "protocol_name": "bank_leaf_expansion_same_metric_v1",
+  "dataset": "bank",
+  "generated_at_utc": "2026-03-08T11:11:28.715458+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "experiments": {
+    "baseline_rf": {
+      "source_file": "results/bank/bank_md20_ml50_tree15.npy",
+      "sample_count": 9043,
+      "test_accuracy": 0.898595598805706
+    },
+    "without_llm": {
+      "source_mode": "run_leaf_expansion bank without_llm equivalent",
+      "sample_count": 9043,
+      "test_accuracy": 0.8886431493973239,
+      "selected_leaf_ids": [
+        5,
+        11,
+        13
+      ]
+    },
+    "llm_guided": {
+      "source_mode": "run_leaf_expansion bank llm_guided mock_llm equivalent",
+      "sample_count": 9043,
+      "test_accuracy": 0.8889748977109366,
+      "selected_leaf_ids": [
+        5,
+        11,
+        13
+      ],
+      "relation_source": "mock_llm"
+    },
+    "online_llm": {
+      "source_file": "results/bank/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 9043,
+      "test_accuracy": 0.8889748977109366,
+      "relation_source": "online_llm",
+      "llm_model": "gpt-4o"
+    }
+  },
+  "comparisons": {
+    "llm_guided_minus_without": 0.0003,
+    "llm_guided_minus_baseline": -0.0096,
+    "online_llm_minus_mock_llm": 0.0
+  },
+  "notes": [
+    "这份摘要比较 bank 上 leaf expansion 原型的统一 test accuracy。",
+    "baseline_rf 来自主链 .npy；without_llm 与 llm_guided(mock_llm) 由同一份 bank 数据和固定原型参数现场重算。",
+    "bank online_llm 已成功纳入同口径摘要。"
+  ],
+  "online_llm_attempt": {
+    "generated_at_utc": "2026-03-08T11:11:25.175949+00:00",
+    "dataset": "bank",
+    "relation_source": "online_llm",
+    "status": "success",
+    "summary_file": "results/bank/llm_guided_leaf_expansion_online_summary.json",
+    "baseline_accuracy": 0.8886431493973239,
+    "test_accuracy": 0.8889748977109366,
+    "llm_model": "gpt-4o",
+    "stdout_preview": "e one that only has larger raw magnitude differences.\\nFor example, compare age vs duration style trade-offs explicitly instead of always preferring recent-contact features.\\nPrioritize customer-contact features such as call duration, campaign history, previous outcome, contact channel, and month when they align with the leaf statistics.\\nAlso use customer profile and financial context such as balance, housing, loan, job, education, and age when they help isolate likely subscribers or non-subscribers.\\nReturn ONLY a JSON object with key ranked_features containing a ranked list of feature ids.\\nDo not add markdown fences, explanation, or any extra keys.\"\n  },\n  \"llm_raw_responses\": {\n    \"5\": \"{\\n    \\\"ranked_features\\\": [5, 6, 15, 3, 1, 0, 14, 4, 7, 2]\\n}\",\n    \"11\": \"{\\n    \\\"ranked_features\\\": [3, 5, 0, 2, 6, 4, 14, 15, 1, 7]\\n}\",\n    \"13\": \"{\\n    \\\"ranked_features\\\": [15, 3, 1, 14, 5, 7, 0, 2, 4, 6]\\n}\"\n  },\n  \"llm_model\": \"gpt-4o\",\n  \"dataset\": \"bank\",\n  \"task_type\": \"binclass\"\n}\n"
+  }
+}

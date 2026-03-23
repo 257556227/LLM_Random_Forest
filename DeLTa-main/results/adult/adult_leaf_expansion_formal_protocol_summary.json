@@ -1,0 +1,83 @@
+{
+  "protocol_name": "adult_leaf_expansion_formal_protocol_v1",
+  "dataset": "adult",
+  "generated_at_utc": "2026-03-10T17:31:52.603643+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/adult/leaf_expansion_without_llm_summary.json",
+      "sample_count": 16281,
+      "test_accuracy": 0.8411645476322093,
+      "max_depth": 3
+    },
+    "deeper_rf": {
+      "source_mode": "adult depth=4 random_forest same-metric recompute",
+      "sample_count": 16281,
+      "test_accuracy": 0.8455868804127511,
+      "test_auc": 0.8966769950899404,
+      "n_estimators": 100,
+      "max_depth": 4
+    },
+    "without_llm": {
+      "source_file": "results/adult/leaf_expansion_without_llm_summary.json",
+      "sample_count": 16281,
+      "test_accuracy": 0.8467538848965052,
+      "selected_leaf_ids": [
+        9,
+        7,
+        11
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "mock_llm": {
+      "source_file": "results/adult/llm_guided_leaf_expansion_summary.json",
+      "sample_count": 16281,
+      "test_accuracy": 0.8440513481972852,
+      "selected_leaf_ids": [
+        9,
+        7,
+        11
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "online_llm": {
+      "source_file": "results/adult/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 16281,
+      "test_accuracy": 0.8492721577298692,
+      "selected_leaf_ids": [
+        9,
+        7,
+        11
+      ],
+      "leaf_selection_strategy": "impurity_mass",
+      "llm_model": null
+    },
+    "traditional_rf": {
+      "source_file": "results/adult/adult_md20_ml50_tree15.npy",
+      "sample_count": 16281,
+      "test_accuracy": 0.8585467723112831,
+      "test_auc": 0.9083806025703411
+    },
+    "traditional_delta": {
+      "source_file": "results/adult/e_RF_md20_ml50_tree15_adult_cart_0.log",
+      "sample_count": null,
+      "test_accuracy": 0.8602051471039862,
+      "test_auc": 0.9101547377557306,
+      "eta": 0.12
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_prototype_baseline": 0.0056,
+    "online_llm_minus_mock_llm": 0.0052,
+    "online_llm_minus_without_llm": 0.0025,
+    "online_llm_minus_deeper_rf": 0.0037,
+    "online_llm_minus_traditional_rf": -0.0093,
+    "online_llm_minus_traditional_delta": -0.0109
+  },
+  "notes": [
+    "这份摘要把 adult 的 leaf expansion 原型、depth=4 Deeper RF，以及传统 DeLTa/RF 主链结果放到同一张协议表里。",
+    "deeper_rf 使用相同 adult 数据划分现场重算的 depth=4 RandomForestClassifier，用来对应统一协议中的 Deeper RF 主对照。",
+    "traditional_rf 来自 run_randforest.py 的主链 .npy；traditional_delta 来自 train.py + ensemble.py 的融合日志。"
+  ]
+}

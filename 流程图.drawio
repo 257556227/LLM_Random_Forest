@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.5.0">
+  <diagram name="Page-1" id="F1XfS2aR93WDkYTZ9Wvf">
+    <mxGraphModel dx="1895" dy="1422" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-1" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="1166" width="291" x="130" y="-360" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-2" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="任务定义与数据对齐" vertex="1">
+          <mxGeometry height="54" width="204" x="69" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-3" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="特征抽取与预处理" vertex="1">
+          <mxGeometry height="54" width="188" x="77" y="104" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-4" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="基线分类器建模" vertex="1">
+          <mxGeometry height="54" width="172" x="85" y="208" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-5" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="候选规则生成" vertex="1">
+          <mxGeometry height="54" width="156" x="93" y="312" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-6" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="Prompt策略设计" vertex="1">
+          <mxGeometry height="54" width="176" x="83" y="416" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-7" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="LLM生成决策策略" vertex="1">
+          <mxGeometry height="54" width="184" x="10" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-8" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="规则解析与映射" vertex="1">
+          <mxGeometry height="54" width="172" x="16" y="624" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-9" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="误差修正训练" vertex="1">
+          <mxGeometry height="54" width="156" x="24" y="752" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-10" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="融合评估与指标对照" vertex="1">
+          <mxGeometry height="54" width="204" y="856" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-11" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="Prompt版本迭代 A/B/C" vertex="1">
+          <mxGeometry height="54" width="225" x="49" y="1008" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-12" parent="TY-asFw2tJxsxhsgDBG8-1" style="whiteSpace=wrap;strokeWidth=2;" value="结论固化与复现清单" vertex="1">
+          <mxGeometry height="54" width="204" x="60" y="1112" as="geometry" />
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-13" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-2" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-14" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-3" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-4" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-15" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-4" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-5" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-16" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-5" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-6" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-17" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-6" style="curved=1;startArrow=none;endArrow=block;exitX=0.3;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-7" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="102" y="495" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-18" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-7" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-8" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-19" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-8" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-9" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-20" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-9" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-10" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-21" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-10" style="curved=1;startArrow=none;endArrow=block;exitX=0.4;exitY=1;entryX=0.31;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-11" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="42" y="959" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-22" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-11" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-12" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-23" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-10" style="curved=1;startArrow=none;endArrow=block;exitX=0.6;exitY=1;entryX=0.5;entryY=0;" target="TY-asFw2tJxsxhsgDBG8-11" value="网络可达后补齐 Prompt-C 同口径评估">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="162" y="959" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TY-asFw2tJxsxhsgDBG8-24" edge="1" parent="TY-asFw2tJxsxhsgDBG8-1" source="TY-asFw2tJxsxhsgDBG8-11" style="curved=1;startArrow=none;endArrow=block;exitX=0.71;exitY=0;entryX=0.85;entryY=1;" target="TY-asFw2tJxsxhsgDBG8-6" value="最佳策略回灌">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="291" y="959" />
+              <mxPoint x="291" y="495" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

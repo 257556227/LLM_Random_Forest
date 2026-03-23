@@ -1,0 +1,29 @@
+{
+  "task_type": "multiclass",
+  "num_classes": 4,
+  "n_num_features": 0,
+  "n_cat_features": 6,
+  "train_size": 864,
+  "val_size": 256,
+  "test_size": 608,
+  "task_intro": "This dataset predicts the quality evaluation of a car based on buying price, maintenance cost, door count, passenger capacity, luggage boot size, and safety level.",
+  "feature_intro": {
+    "num": {},
+    "cat": {
+      "buying": "buying price category of the car",
+      "maint": "maintenance cost category of the car",
+      "doors": "number of doors category",
+      "persons": "passenger capacity category",
+      "lug_boot": "luggage boot size category",
+      "safety": "safety rating category"
+    }
+  },
+  "target_intro": {
+    "unacc": "the car is unacceptable for purchase under the current attribute combination",
+    "acc": "the car is acceptable but not considered a strong recommendation",
+    "good": "the car is considered good and meets the buyer's needs well",
+    "vgood": "the car is considered very good and stands out across the evaluated criteria"
+  },
+  "source": "https://www.openml.org/d/21",
+  "openml_id": 21
+}

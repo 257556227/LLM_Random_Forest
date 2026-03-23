@@ -1,0 +1,69 @@
+{
+  "protocol_name": "mnist_leaf_expansion_same_metric_v1",
+  "dataset": "mnist",
+  "generated_at_utc": "2026-03-08T09:50:40.603962+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "experiments": {
+    "baseline_rf": {
+      "source_file": "results/mnist/mnist_md8_ml20_tree3.npy",
+      "sample_count": 10000,
+      "test_accuracy": 0.6908
+    },
+    "deeper_rf": {
+      "source_file": "results/mnist/mnist_md20_ml100_tree15.npy",
+      "sample_count": 10000,
+      "test_accuracy": 0.9025
+    },
+    "without_llm": {
+      "source_mode": "run_leaf_expansion_mnist without_llm equivalent",
+      "sample_count": 10000,
+      "test_accuracy": 0.54,
+      "selected_leaf_ids": [
+        10,
+        8,
+        9
+      ]
+    },
+    "llm_guided": {
+      "source_mode": "run_leaf_expansion_mnist llm_guided mock_llm equivalent",
+      "sample_count": 10000,
+      "test_accuracy": 0.5603,
+      "selected_leaf_ids": [
+        10,
+        8,
+        9
+      ],
+      "relation_source": "mock_llm"
+    },
+    "online_llm": {
+      "source_file": "results/mnist/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 10000,
+      "test_accuracy": 0.5622,
+      "relation_source": "online_llm",
+      "llm_model": "gpt-4o"
+    }
+  },
+  "comparisons": {
+    "deeper_minus_baseline": 0.2117,
+    "llm_guided_minus_without": 0.0203,
+    "llm_guided_minus_baseline": -0.1305,
+    "online_llm_minus_mock_llm": 0.0019
+  },
+  "notes": [
+    "这份摘要只比较统一的 test accuracy，不混用 fused eval 与原型摘要中的单独字段。",
+    "baseline_rf 与 deeper_rf 来自主链 .npy 里的 logit/label；without_llm 与 llm_guided 由同一份 MNIST 数据和固定原型参数现场重算。",
+    "因此 strict_same_metric_protocol_ready 在这份摘要内为 true，但它不替代库存摘要文件的历史记录价值。",
+    "online_llm 已成功纳入同口径摘要。"
+  ],
+  "online_llm_attempt": {
+    "generated_at_utc": "2026-03-08T09:50:33.343437+00:00",
+    "relation_source": "online_llm",
+    "status": "success",
+    "summary_file": "results/mnist/llm_guided_leaf_expansion_online_summary.json",
+    "baseline_accuracy": 0.4953,
+    "test_accuracy": 0.5622,
+    "llm_model": "gpt-4o",
+    "stdout_preview": "ature_id=546, pixel=(19,14), variance=0.189255, information_gain=0.032911, class_mean_spread=0.504794, predicted_class_mean_gap=0.310708\\nfeature_id=628, pixel=(22,12), variance=0.189222, information_gain=0.007477, class_mean_spread=0.572938, predicted_class_mean_gap=0.065146\\nPrefer features that are likely to create a useful one-feature split for this leaf.\\nReturn ONLY a JSON object with key ranked_features containing a ranked list of feature ids.\\nDo not add markdown fences, explanation, or any extra keys.\"\n  },\n  \"llm_raw_responses\": {\n    \"10\": \"{\\n    \\\"ranked_features\\\": [211, 210, 212, 238, 237, 326, 573, 602, 574, 546]\\n}\",\n    \"8\": \"{\\n    \\\"ranked_features\\\": [\\n        347,\\n        374,\\n        154,\\n        484,\\n        488,\\n        516,\\n        515,\\n        522,\\n        237,\\n        549\\n    ]\\n}\",\n    \"9\": \"{\\\"ranked_features\\\": [266, 265, 299, 271, 327, 261, 546, 573, 657, 628]}\"\n  },\n  \"llm_model\": \"gpt-4o\",\n  \"dataset\": \"mnist\",\n  \"task_type\": \"multiclass\"\n}\n"
+  }
+}

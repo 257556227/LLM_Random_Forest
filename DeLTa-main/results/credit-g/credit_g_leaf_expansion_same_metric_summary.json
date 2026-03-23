@@ -1,0 +1,51 @@
+{
+  "protocol_name": "credit_g_leaf_expansion_same_metric_v1",
+  "dataset": "credit-g",
+  "generated_at_utc": "2026-03-11T12:34:24.168320+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": false,
+  "notes": [
+    "这份摘要聚焦 credit-g 上 leaf expansion 原型第一轮结果。",
+    "当前 baseline 来自同一棵 depth=3 原型树，不是 DeLTa 主链 RF baseline。"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/credit-g/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.7285714285714285
+    },
+    "without_llm": {
+      "source_file": "results/credit-g/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.7171428571428572,
+      "selected_leaf_ids": [
+        5,
+        9,
+        14
+      ]
+    },
+    "mock_llm": {
+      "source_file": "results/credit-g/llm_guided_leaf_expansion_summary.json",
+      "test_accuracy": 0.7285714285714285,
+      "selected_leaf_ids": [
+        5,
+        9,
+        14
+      ]
+    },
+    "online_llm": {
+      "source_file": "results/credit-g/llm_guided_leaf_expansion_online_summary.json",
+      "test_accuracy": 0.7171428571428572,
+      "selected_leaf_ids": [
+        5,
+        9,
+        14
+      ],
+      "llm_model": null
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_baseline": -0.0114,
+    "mock_llm_minus_without_llm": 0.0114,
+    "online_llm_minus_mock_llm": -0.0114,
+    "online_llm_minus_without_llm": 0.0
+  }
+}

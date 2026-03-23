@@ -1,0 +1,58 @@
+{
+  "prototype": "Leaf Expansion without LLM",
+  "baseline_accuracy": 0.8886431493973239,
+  "expanded_accuracy": 0.8904124737365918,
+  "selected_leaf_ids": [
+    14,
+    10,
+    6
+  ],
+  "expanded_leaf_count": 3,
+  "ranked_features_by_leaf": {
+    "14": [
+      1,
+      3,
+      0,
+      2,
+      5,
+      4,
+      7,
+      14,
+      9,
+      8
+    ],
+    "10": [
+      1,
+      5,
+      3,
+      0,
+      2,
+      7,
+      6,
+      15,
+      4,
+      9
+    ],
+    "6": [
+      1,
+      3,
+      5,
+      2,
+      0,
+      14,
+      6,
+      4,
+      7,
+      15
+    ]
+  },
+  "top_k_features_to_try": 3,
+  "leaf_selection_strategy": "impurity",
+  "selected_expansion_features_by_leaf": {
+    "14": 0,
+    "10": 3,
+    "6": 3
+  },
+  "dataset": "bank",
+  "task_type": "binclass"
+}

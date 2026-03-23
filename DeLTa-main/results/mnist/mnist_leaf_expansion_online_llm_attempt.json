@@ -1,0 +1,10 @@
+{
+  "generated_at_utc": "2026-03-09T17:04:27.655558+00:00",
+  "relation_source": "online_llm",
+  "status": "success",
+  "summary_file": "results/mnist/llm_guided_leaf_expansion_online_summary.json",
+  "baseline_accuracy": 0.4953,
+  "test_accuracy": 0.5622,
+  "llm_model": "gpt-4o",
+  "stdout_preview": "rder.\\nFor numeric features, prefer threshold-like splits that separate positive and negative classes with stable gain.\\nFor categorical features, prefer fields whose categories are likely to isolate different outcome groups or contact histories.\\nDo not infer spatial adjacency between feature ids.\\nTreat ordinal-encoded categorical ids as labels, not as meaningful magnitudes.\\nReturn ONLY a JSON object with key ranked_features containing a ranked list of feature ids.\\nDo not add markdown fences, explanation, or any extra keys.\"\n  },\n  \"llm_raw_responses\": {\n    \"10\": \"{\\n    \\\"ranked_features\\\": [\\n        211,\\n        210,\\n        212,\\n        238,\\n        237,\\n        326,\\n        573,\\n        602,\\n        574,\\n        546\\n    ]\\n}\",\n    \"8\": \"{\\\"ranked_features\\\": [347, 374, 484, 488, 516, 154, 515, 522, 237, 549]}\",\n    \"9\": \"{\\\"ranked_features\\\":[266,265,299,271,327,261,546,573,657,628]}\"\n  },\n  \"llm_model\": \"gpt-4o\",\n  \"dataset\": \"mnist\",\n  \"task_type\": \"multiclass\"\n}\n"
+}

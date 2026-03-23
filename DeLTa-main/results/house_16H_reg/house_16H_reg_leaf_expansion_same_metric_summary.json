@@ -1,0 +1,60 @@
+{
+  "protocol_name": "house_16H_reg_leaf_expansion_same_metric_v1",
+  "dataset": "house_16H_reg",
+  "generated_at_utc": "2026-03-11T16:03:51.609735+00:00",
+  "metric_scope": "same_test_rmse_eval",
+  "strict_same_metric_protocol_ready": false,
+  "notes": [
+    "这份摘要聚焦 house_16H_reg 上 leaf expansion 原型第一轮回归结果。",
+    "当前 baseline 来自同一棵 depth=3 原型树，不是 DeLTa 主链 RF/TabPFN baseline。",
+    "回归任务以 RMSE 降低为主指标，以 R2 提升为辅助指标。"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/house_16H_reg/leaf_expansion_without_llm_summary.json",
+      "test_rmse": 43327.97661981514,
+      "test_r2": 0.3317124125311788
+    },
+    "without_llm": {
+      "source_file": "results/house_16H_reg/leaf_expansion_without_llm_summary.json",
+      "test_rmse": 42303.109761695276,
+      "test_r2": 0.36295345241062327,
+      "selected_leaf_ids": [
+        5,
+        10,
+        12
+      ]
+    },
+    "mock_llm": {
+      "source_file": "results/house_16H_reg/llm_guided_leaf_expansion_summary.json",
+      "test_rmse": 42843.39053195914,
+      "test_r2": 0.34657726157186863,
+      "selected_leaf_ids": [
+        5,
+        10,
+        12
+      ]
+    },
+    "online_llm": {
+      "source_file": "results/house_16H_reg/llm_guided_leaf_expansion_online_summary.json",
+      "test_rmse": 42044.38016378194,
+      "test_r2": 0.3707220898730128,
+      "selected_leaf_ids": [
+        5,
+        10,
+        12
+      ],
+      "llm_model": null
+    }
+  },
+  "comparisons": {
+    "without_llm_rmse_delta_vs_baseline": 1024.8669,
+    "mock_llm_rmse_delta_vs_without_llm": -540.2808,
+    "online_llm_rmse_delta_vs_mock": 799.0104,
+    "online_llm_rmse_delta_vs_without_llm": 258.7296,
+    "without_llm_r2_delta_vs_baseline": 0.0312,
+    "mock_llm_r2_delta_vs_without_llm": -0.0164,
+    "online_llm_r2_delta_vs_mock": 0.0241,
+    "online_llm_r2_delta_vs_without_llm": 0.0078
+  }
+}

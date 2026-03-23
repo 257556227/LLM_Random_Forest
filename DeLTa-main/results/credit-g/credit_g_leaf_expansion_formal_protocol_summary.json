@@ -1,0 +1,83 @@
+{
+  "protocol_name": "credit_g_leaf_expansion_formal_protocol_v1",
+  "dataset": "credit-g",
+  "generated_at_utc": "2026-03-11T14:13:47.358981+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/credit-g/leaf_expansion_without_llm_summary.json",
+      "sample_count": 350,
+      "test_accuracy": 0.7285714285714285,
+      "max_depth": 3
+    },
+    "deeper_rf": {
+      "source_mode": "credit-g depth=4 random_forest same-metric recompute",
+      "sample_count": 350,
+      "test_accuracy": 0.7314285714285714,
+      "test_auc": 0.7869387755102041,
+      "n_estimators": 100,
+      "max_depth": 4
+    },
+    "without_llm": {
+      "source_file": "results/credit-g/leaf_expansion_without_llm_summary.json",
+      "sample_count": 350,
+      "test_accuracy": 0.7171428571428572,
+      "selected_leaf_ids": [
+        5,
+        9,
+        14
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "mock_llm": {
+      "source_file": "results/credit-g/llm_guided_leaf_expansion_summary.json",
+      "sample_count": 350,
+      "test_accuracy": 0.7285714285714285,
+      "selected_leaf_ids": [
+        5,
+        9,
+        14
+      ],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "online_llm": {
+      "source_file": "results/credit-g/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 350,
+      "test_accuracy": 0.7171428571428572,
+      "selected_leaf_ids": [
+        5,
+        9,
+        14
+      ],
+      "leaf_selection_strategy": "impurity_mass",
+      "llm_model": null
+    },
+    "traditional_rf": {
+      "source_file": "results/credit-g/credit-g_md15_ml20_tree20.npy",
+      "sample_count": 350,
+      "test_accuracy": 0.7428571428571429,
+      "test_auc": 0.7720505344995141
+    },
+    "traditional_delta": {
+      "source_file": "results/credit-g/e_RF_md15_ml20_tree20_credit-g_cart_0.log",
+      "sample_count": null,
+      "test_accuracy": 0.7342857142857143,
+      "test_auc": 0.771156462585034,
+      "eta": 0.1
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_prototype_baseline": -0.0114,
+    "online_llm_minus_mock_llm": -0.0114,
+    "online_llm_minus_without_llm": 0.0,
+    "online_llm_minus_deeper_rf": -0.0143,
+    "online_llm_minus_traditional_rf": -0.0257,
+    "online_llm_minus_traditional_delta": -0.0171
+  },
+  "notes": [
+    "这份摘要把 credit-g 的 leaf expansion 原型、depth=4 Deeper RF，以及传统 DeLTa/RF 主链结果放到同一张协议表里。",
+    "deeper_rf 使用相同 credit-g 数据划分现场重算的 depth=4 RandomForestClassifier，用来对应统一协议中的 Deeper RF 主对照。",
+    "traditional_rf 来自 run_randforest.py 的主链 .npy；traditional_delta 来自 train.py + ensemble.py 的融合日志。"
+  ]
+}

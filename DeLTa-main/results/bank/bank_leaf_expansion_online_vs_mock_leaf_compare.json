@@ -1,0 +1,118 @@
+{
+  "generated_at_utc": "2026-03-08T11:11:32.225648+00:00",
+  "dataset": "bank",
+  "mock_summary_file": "results/bank/llm_guided_leaf_expansion_summary.json",
+  "online_summary_file": "results/bank/llm_guided_leaf_expansion_online_summary.json",
+  "mock_global_test_accuracy": 0.8889748977109366,
+  "online_global_test_accuracy": 0.8889748977109366,
+  "leaf_comparisons": [
+    {
+      "leaf_id": 5,
+      "sample_count_train": 30388,
+      "sample_count_test": 7599,
+      "predicted_class": 0,
+      "baseline_leaf_test_accuracy": 0.9398605079615739,
+      "mock_selected_feature": 7,
+      "mock_selected_feature_name": "job",
+      "mock_selected_feature_description": "job",
+      "mock_local_train_accuracy": 0.9412926155061209,
+      "mock_local_test_accuracy": 0.9398605079615739,
+      "online_selected_feature": 5,
+      "online_selected_feature_name": "pdays",
+      "online_selected_feature_description": "pdays",
+      "online_local_train_accuracy": 0.9412926155061209,
+      "online_local_test_accuracy": 0.9398605079615739,
+      "online_minus_mock_local_test_accuracy": 0.0,
+      "same_selected_feature": false,
+      "mock_ranked_top5": [
+        7,
+        4,
+        14,
+        6,
+        15
+      ],
+      "online_ranked_top5": [
+        5,
+        6,
+        15,
+        3,
+        1
+      ],
+      "top3_overlap_count": 0
+    },
+    {
+      "leaf_id": 11,
+      "sample_count_train": 1966,
+      "sample_count_test": 510,
+      "predicted_class": 0,
+      "baseline_leaf_test_accuracy": 0.6019607843137255,
+      "mock_selected_feature": 0,
+      "mock_selected_feature_name": "age",
+      "mock_selected_feature_description": "age",
+      "mock_local_train_accuracy": 0.6174974567650051,
+      "mock_local_test_accuracy": 0.6078431372549019,
+      "online_selected_feature": 0,
+      "online_selected_feature_name": "age",
+      "online_selected_feature_description": "age",
+      "online_local_train_accuracy": 0.6174974567650051,
+      "online_local_test_accuracy": 0.6078431372549019,
+      "online_minus_mock_local_test_accuracy": 0.0,
+      "same_selected_feature": true,
+      "mock_ranked_top5": [
+        5,
+        3,
+        0,
+        2,
+        14
+      ],
+      "online_ranked_top5": [
+        3,
+        5,
+        0,
+        2,
+        6
+      ],
+      "top3_overlap_count": 3
+    },
+    {
+      "leaf_id": 13,
+      "sample_count_train": 1121,
+      "sample_count_test": 287,
+      "predicted_class": 1,
+      "baseline_leaf_test_accuracy": 0.5749128919860628,
+      "mock_selected_feature": 0,
+      "mock_selected_feature_name": "age",
+      "mock_selected_feature_description": "age",
+      "mock_local_train_accuracy": 0.6164139161462979,
+      "mock_local_test_accuracy": 0.5749128919860628,
+      "online_selected_feature": 15,
+      "online_selected_feature_name": "poutcome",
+      "online_selected_feature_description": "poutcome",
+      "online_local_train_accuracy": 0.6164139161462979,
+      "online_local_test_accuracy": 0.5749128919860628,
+      "online_minus_mock_local_test_accuracy": 0.0,
+      "same_selected_feature": false,
+      "mock_ranked_top5": [
+        0,
+        2,
+        14,
+        7,
+        4
+      ],
+      "online_ranked_top5": [
+        15,
+        3,
+        1,
+        14,
+        5
+      ],
+      "top3_overlap_count": 0
+    }
+  ],
+  "aggregate": {
+    "leaf_count": 3,
+    "online_better_leaf_count": 0,
+    "mock_better_leaf_count": 0,
+    "same_feature_leaf_count": 1
+  }
+}

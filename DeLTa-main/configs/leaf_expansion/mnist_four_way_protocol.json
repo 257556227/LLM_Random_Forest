@@ -1,0 +1,92 @@
+{
+  "protocol_name": "mnist_leaf_expansion_four_way_v1",
+  "dataset": "mnist",
+  "notes": [
+    "这个配置文件的目标是把四组协议的复跑入口固定下来，而不是在每次执行前重新手拼命令。",
+    "baseline_rf 与 deeper_rf 当前仍依赖 DeLTa 主链的答案/规则链路，因此默认只输出标准命令配方；without_llm 与 llm_guided 可由原型入口直接执行。",
+    "build_summary 用于在各阶段执行后统一刷新 mnist_leaf_expansion_protocol_summary.json。"
+  ],
+  "stages": [
+    {
+      "name": "baseline_rf",
+      "kind": "recipe",
+      "description": "复跑当前浅配置主链并刷新 fused 日志（md8/ml20/tree3）",
+      "commands": [
+        "python train_model_classical.py --task_type full --n_estimators 3 --max_depth 8 --max_leaf_nodes 20 --dataset mnist --dataset_path example_datasets --seed_num 1 --model_type RandomForest_save --save_npy results/mnist/mnist_md8_ml20_tree3",
+        "python ensemble.py --small_model cart --num_classes 10 --n_ensemble 9 --md 8 --ml 20 --tree 3 --dataset mnist --eta_override 0.2"
+      ],
+      "outputs": [
+        "results/mnist/mnist_md8_ml20_tree3.npy",
+        "results/mnist/e_RF_md8_ml20_tree3_mnist_cart_9.log"
+      ]
+    },
+    {
+      "name": "deeper_rf",
+      "kind": "recipe",
+      "description": "复跑更深配置主链并刷新 fused 日志（md20/ml100/tree15）",
+      "commands": [
+        "python train_model_classical.py --task_type full --n_estimators 15 --max_depth 20 --max_leaf_nodes 100 --dataset mnist --dataset_path example_datasets --seed_num 1 --model_type RandomForest_save --save_npy results/mnist/mnist_md20_ml100_tree15",
+        "python ensemble.py --small_model cart --num_classes 10 --n_ensemble 9 --md 20 --ml 100 --tree 15 --dataset mnist"
+      ],
+      "outputs": [
+        "results/mnist/mnist_md20_ml100_tree15.npy",
+        "results/mnist/e_RF_md20_ml100_tree15_mnist_cart_9.log"
+      ]
+    },
+    {
+      "name": "without_llm",
+      "kind": "direct",
+      "description": "复跑无 LLM 叶子扩展原型",
+      "commands": [
+        "python run_leaf_expansion_mnist.py --mode without_llm --save_summary --output results/mnist/leaf_expansion_without_llm_summary.json"
+      ],
+      "outputs": [
+        "results/mnist/leaf_expansion_without_llm_summary.json"
+      ]
+    },
+    {
+      "name": "llm_guided",
+      "kind": "direct",
+      "description": "复跑 mock_llm 口径的 LLM 引导叶子扩展原型",
+      "commands": [
+        "python run_leaf_expansion_mnist.py --mode llm_guided --relation_source mock_llm --save_summary --guided_output results/mnist/llm_guided_leaf_expansion_summary.json"
+      ],
+      "outputs": [
+        "results/mnist/llm_guided_leaf_expansion_summary.json"
+      ]
+    },
+    {
+      "name": "build_summary",
+      "kind": "direct",
+      "description": "刷新四组协议统一库存摘要",
+      "commands": [
+        "python tools/build_mnist_protocol_summary.py"
+      ],
+      "outputs": [
+        "results/mnist/mnist_leaf_expansion_protocol_summary.json"
+      ]
+    },
+    {
+      "name": "same_metric_eval",
+      "kind": "direct",
+      "description": "生成四组协议统一 test accuracy 评估摘要",
+      "commands": [
+        "python tools/evaluate_mnist_same_metric_protocol.py"
+      ],
+      "outputs": [
+        "results/mnist/mnist_leaf_expansion_same_metric_summary.json"
+      ]
+    },
+    {
+      "name": "online_llm_same_metric_attempt",
+      "kind": "direct",
+      "description": "尝试生成真实 online_llm 的同口径结果或阻塞记录",
+      "commands": [
+        "python tools/attempt_mnist_online_llm_same_metric.py"
+      ],
+      "outputs": [
+        "results/mnist/mnist_leaf_expansion_online_llm_attempt.json"
+      ]
+    }
+  ]
+}

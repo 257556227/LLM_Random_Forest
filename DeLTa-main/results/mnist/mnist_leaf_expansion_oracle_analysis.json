@@ -1,0 +1,149 @@
+{
+  "generated_at_utc": "2026-03-08T09:50:47.751220+00:00",
+  "dataset": "mnist",
+  "selected_leaf_ids": [
+    10,
+    8,
+    9
+  ],
+  "focus_leaf_ids": [
+    8,
+    9
+  ],
+  "leaves": {
+    "10": {
+      "sample_count_train": 14417,
+      "sample_count_test": 2336,
+      "oracle_best_feature": {
+        "feature_id": 211,
+        "train_accuracy": 0.5093292640632586,
+        "test_accuracy": 0.519263698630137
+      },
+      "top3_oracle_features": [
+        {
+          "feature_id": 211,
+          "train_accuracy": 0.5093292640632586,
+          "test_accuracy": 0.519263698630137
+        },
+        {
+          "feature_id": 210,
+          "train_accuracy": 0.4890060345425539,
+          "test_accuracy": 0.5102739726027398
+        },
+        {
+          "feature_id": 238,
+          "train_accuracy": 0.4785322882707914,
+          "test_accuracy": 0.5034246575342466
+        }
+      ],
+      "methods": {
+        "without_llm": {
+          "chosen_feature_id": 211,
+          "local_test_accuracy": 0.519263698630137,
+          "oracle_gap": 0.0
+        },
+        "mock_llm": {
+          "chosen_feature_id": 211,
+          "local_test_accuracy": 0.519263698630137,
+          "oracle_gap": 0.0
+        },
+        "online_llm": {
+          "chosen_feature_id": 211,
+          "local_test_accuracy": 0.519263698630137,
+          "oracle_gap": 0.0
+        }
+      }
+    },
+    "8": {
+      "sample_count_train": 9058,
+      "sample_count_test": 1455,
+      "oracle_best_feature": {
+        "feature_id": 347,
+        "train_accuracy": 0.5,
+        "test_accuracy": 0.5195876288659794
+      },
+      "top3_oracle_features": [
+        {
+          "feature_id": 347,
+          "train_accuracy": 0.5,
+          "test_accuracy": 0.5195876288659794
+        },
+        {
+          "feature_id": 374,
+          "train_accuracy": 0.4844336498123206,
+          "test_accuracy": 0.5065292096219931
+        },
+        {
+          "feature_id": 488,
+          "train_accuracy": 0.42669463457716933,
+          "test_accuracy": 0.44054982817869415
+        }
+      ],
+      "methods": {
+        "without_llm": {
+          "chosen_feature_id": 522,
+          "local_test_accuracy": 0.3670103092783505,
+          "oracle_gap": 0.1526
+        },
+        "mock_llm": {
+          "chosen_feature_id": 374,
+          "local_test_accuracy": 0.5065292096219931,
+          "oracle_gap": 0.0131
+        },
+        "online_llm": {
+          "chosen_feature_id": 347,
+          "local_test_accuracy": 0.5195876288659794,
+          "oracle_gap": 0.0
+        }
+      }
+    },
+    "9": {
+      "sample_count_train": 9667,
+      "sample_count_test": 1671,
+      "oracle_best_feature": {
+        "feature_id": 271,
+        "train_accuracy": 0.5145339815868418,
+        "test_accuracy": 0.49012567324955114
+      },
+      "top3_oracle_features": [
+        {
+          "feature_id": 271,
+          "train_accuracy": 0.5145339815868418,
+          "test_accuracy": 0.49012567324955114
+        },
+        {
+          "feature_id": 266,
+          "train_accuracy": 0.5145339815868418,
+          "test_accuracy": 0.49012567324955114
+        },
+        {
+          "feature_id": 299,
+          "train_accuracy": 0.5145339815868418,
+          "test_accuracy": 0.49012567324955114
+        }
+      ],
+      "methods": {
+        "without_llm": {
+          "chosen_feature_id": 271,
+          "local_test_accuracy": 0.49012567324955114,
+          "oracle_gap": 0.0
+        },
+        "mock_llm": {
+          "chosen_feature_id": 628,
+          "local_test_accuracy": 0.49012567324955114,
+          "oracle_gap": 0.0
+        },
+        "online_llm": {
+          "chosen_feature_id": 266,
+          "local_test_accuracy": 0.49012567324955114,
+          "oracle_gap": 0.0
+        }
+      }
+    }
+  },
+  "summary": {
+    "mock_accuracy": 0.5603,
+    "online_accuracy": 0.5622,
+    "online_minus_mock": 0.0019
+  }
+}

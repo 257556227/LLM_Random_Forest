@@ -1,0 +1,52 @@
+{
+  "protocol_name": "jannis_leaf_expansion_same_metric_v1",
+  "dataset": "jannis",
+  "generated_at_utc": "2026-03-11T14:55:31.046282+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": false,
+  "notes": [
+    "这份摘要聚焦 jannis 上 leaf expansion 原型第一轮结果。",
+    "当前 baseline 来自同一棵 depth=3 原型树，不是 DeLTa 主链 RF baseline。",
+    "jannis 属于高维弱语义多分类数据，第一轮重点看 online 是否能超过 mock 与 without_llm。"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/jannis/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.5666686570729086
+    },
+    "without_llm": {
+      "source_file": "results/jannis/leaf_expansion_without_llm_summary.json",
+      "test_accuracy": 0.5639816086463247,
+      "selected_leaf_ids": [
+        8,
+        10,
+        12
+      ]
+    },
+    "mock_llm": {
+      "source_file": "results/jannis/llm_guided_leaf_expansion_summary.json",
+      "test_accuracy": 0.5651161402042156,
+      "selected_leaf_ids": [
+        8,
+        10,
+        12
+      ]
+    },
+    "online_llm": {
+      "source_file": "results/jannis/llm_guided_leaf_expansion_online_summary.json",
+      "test_accuracy": 0.5814175673254911,
+      "selected_leaf_ids": [
+        8,
+        10,
+        12
+      ],
+      "llm_model": null
+    }
+  },
+  "comparisons": {
+    "without_llm_minus_baseline": -0.0027,
+    "mock_llm_minus_without_llm": 0.0011,
+    "online_llm_minus_mock_llm": 0.0163,
+    "online_llm_minus_without_llm": 0.0174
+  }
+}
