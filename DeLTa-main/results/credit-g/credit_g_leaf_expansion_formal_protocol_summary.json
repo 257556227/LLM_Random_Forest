@@ -1,7 +1,7 @@
 {
   "protocol_name": "credit_g_leaf_expansion_formal_protocol_v1",
   "dataset": "credit-g",
-  "generated_at_utc": "2026-03-11T14:13:47.358981+00:00",
+  "generated_at_utc": "2026-03-23T16:34:41.612090+00:00",
   "metric_scope": "same_test_accuracy_eval",
   "strict_same_metric_protocol_ready": true,
   "experiments": {
