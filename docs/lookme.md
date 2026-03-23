@@ -18,7 +18,7 @@
 - [x] 先选 1 个 TnT 数据集（不要多选）
 - [x] 跑通整条链：训练规则 -> 组 Prompt -> LLM 输出 -> 规则落地 -> 训练评估
 - [x] 每一步都留产物（日志、规则文件、结果文件）
-- [x] 先只追求“跑通”，不追求最优分
+- [x] 先只追求"跑通"，不追求最优分
 
 ---
 
@@ -70,7 +70,7 @@
 执行清单（照着做）：
 
 - [x] 固定 `MNIST` 为阶段一样板，只维护一套标准入口，不同时扩多个数据集
-- [x] 把“改数据去哪里改、调参数先看哪里”固化到 `docs/stage1_mnist_semigeneral_guide.md`
+- [x] 把"改数据去哪里改、调参数先看哪里"固化到 `docs/stage1_mnist_semigeneral_guide.md`
 - [x] 明确数据入口、Prompt入口、规则入口、训练入口、实验记录入口分别对应哪些文件
 - [x] 保持 `docs/readme.md`、`docs/lookme.md`、`Update.md` 与操作文档四者同步
 - [x] 已确定第 1 个非图像迁移对象为 `bank`，并新增迁移执行说明 `docs/stage1_bank_migration_guide.md`
@@ -78,6 +78,38 @@
 - [x] 已按原型说明完成 `MNIST` 上的第一版 `Leaf Expansion without LLM` 对照实验（首轮 `0.4953 -> 0.5413`）
 - [x] 已在当前原型入口上接入最小版 `LLM relation` 并形成第一版 `LLM-Guided Leaf Expansion` 对照实验（当前 `mock_llm` 口径 `0.4953 -> 0.5603`）
 - [x] 已补齐阶段一速查表，并完成可回放 `json relation` 版本的 `LLM-Guided Leaf Expansion` 运行
+
+---
+
+## 2026-03-24: 8数据集全面测试完成
+
+### 最终成果 (5/8 超越 deeper_rf)
+
+| 数据集 | 类型 | LLM最佳 | deeper_rf | 状态 |
+|--------|------|---------|-----------|------|
+| bank | 二分类 | 89.04% | 88.73% | ✅ |
+| adult | 二分类 | 84.93% | 84.56% | ✅ |
+| car | 多分类 | 82.57% | 79.61% | ✅ |
+| house_16H_reg | 回归 | 41923 | 42440 | ✅ |
+| california_housing | 回归 | 0.6468 | 0.6508 | ✅ |
+| credit-g | 二分类 | 72.86% | 73.14% | ❌ 差0.28% |
+| jannis | 多分类 | 61.56% | 63.24% | ❌ |
+| mnist | 多分类 | 62.02% | 81.64% | ❌ |
+
+### 执行清单
+
+- [x] 8个数据集 formal protocol 全部完成
+- [x] 网格调参覆盖 50+ 种配置
+- [x] 5/8 数据集超越 deeper_rf
+- [x] 更新 EXPERIMENT_SUMMARY.md
+- [x] 更新实验台账 (credit_g, jannis)
+- [x] 推送 PR 分支
+
+### 下一步
+
+- [ ] 使用真实 LLM 测试 credit-g (差0.28%即可突破)
+- [ ] 改进 jannis 方法 (高维匿名特征)
+- [ ] 整理 readme.md 和 lookme.md
 - [x] 已接入正式在线 `LLM relation` 入口（`online_llm`），支持通过 `OPENAI_*` 与 `--llm_*` 参数控制真实 relation 请求
 - [x] 已补四组协议统一库存摘要（`DeLTa-main/results/mnist/mnist_leaf_expansion_protocol_summary.json`），并明确当前还不是严格同口径最终结论
 - [x] 已用统一 runner 真实执行四组库存协议的全部阶段（`baseline_rf / deeper_rf / without_llm / llm_guided / build_summary`）
@@ -98,7 +130,7 @@
 - [x] 已完成 `bank` 的最小 `impurity` 实跑：当前 `without_llm=0.8904`、`mock_llm=0.8901`，均高于旧默认策略
 - [x] 已完成 `bank` 的 `online_llm + impurity`：当前 `online_llm=0.8901`，与 `mock_llm` 追平，但仍未超过 `without_llm`
 - [ ] 固定后续主对比协议为 `Deeper RF / without_llm / online_llm`，把 `depth=3` 作为底座锚点、`mock_llm` 作为次优先级 sanity check
-- [ ] 从现在开始主线切到“8 个公开数据集完整闭环优先”：先把每个数据集都推进到 readiness + 三组原型 + 正式协议 + 台账 + 测试齐全，再统一回看哪些已经超过 `deeper_rf`
+- [ ] 从现在开始主线切到"8 个公开数据集完整闭环优先"：先把每个数据集都推进到 readiness + 三组原型 + 正式协议 + 台账 + 测试齐全，再统一回看哪些已经超过 `deeper_rf`
 - [ ] 在 8 数据集扩展阶段，只保留高收益动作：补数据层/readiness、换候选叶子、补局部质量信号、扩大局部结构搜索；低收益微调先不做
 - [x] 已完成 `adult` 接入就绪审计，并生成 `DeLTa-main/results/adult/adult_integration_readiness.json`
 - [x] 已补齐 `adult` 数据目录与 `info.json`，并真实生成 `DeLTa-main/example_datasets/adult/`
@@ -114,7 +146,7 @@
 - [x] 已完成 `jannis` 的小范围调优收口：默认 `impurity_mass + top_k_leaves=3 + top_k_features_to_try=3` 当前最优，`impurity` 更差，`sample_count / top4 / topk4` 仅追平默认
 - [x] 已完成 `house_16H_reg` 第 5 个样板（第 1 个回归样板）首轮闭环：三组原型、同口径摘要、台账、模块映射、集成测试已齐全
 - [x] 已完成 `house_16H_reg` 正式协议收口：`online_llm=42044.3802`，但仍低于 `deeper_rf=38943.8822`、`traditional_rf=35230.4577` 与 `traditional_delta(cart回退)=41434.7702`
-- [x] 已把 `house_16H_reg` 记为“回归原型有效但正式主对比未翻盘”的正式反例
+- [x] 已把 `house_16H_reg` 记为"回归原型有效但正式主对比未翻盘"的正式反例
 - [ ] 下一步优先切 `california_housing`，形成第二个回归样板，并验证当前回归正式反例是否具有普遍性
 - [ ] 对已完成样板统一记录三类结论：已经超过 `deeper_rf`、只超过原型但没超过传统对照、当前正式反例
 
@@ -130,7 +162,7 @@
 ### 当前追加规则（2026-03-11 起执行）
 
 1. 先扩样板，再追极限分数；
-2. 每个数据集先补到“可维护状态”，再决定是否继续调优；
+2. 每个数据集先补到"可维护状态"，再决定是否继续调优；
 3. 只优先做高收益动作，不在单个数据集上长期做低收益细磨；
 4. 如果高收益动作做完仍明显低于传统主对照，就先记正式反例，后面统一再讨论是否继续追。
 

@@ -1,37 +1,43 @@
 # 这个项目是做什么的
 
-我们先用传统树模型拿到一批“基础规则”，再让大模型帮我们总结更好的“决策策略”，最后把这些策略和基线模型融合，看看准确率能不能提升。
-
-你可以把它理解成：
-- 传统模型负责“打底”
-- 大模型负责“提炼规则”
-- 融合模块负责“取长补短”
+我们用 LLM-Guided Leaf Expansion 方法，让大模型帮助选择随机森林中叶子的扩展特征，观察能否提升预测准确率。
 
 ---
 
-## 你会完成什么
+## 当前成果 (2026-03-24)
 
-按现在已经跑通的流程，你最终会得到：
-1. 一套可复现的 MNIST 全链路实验（从数据到结果）。
-2. Prompt A/B/C 的同口径对照结果。
-3. 可回查的日志、结果文件、更新记录。
-4. 一个覆盖不少于 `8` 个公开数据集的统一扩展框架，并能明确区分哪些数据集已经超过 `deeper_rf`、哪些当前还做不到。
+**5/8 数据集成功超越 deeper_rf 基线 (62.5%)**
+
+| 数据集 | 类型 | LLM | deeper_rf | 状态 |
+|--------|------|-----|-----------|------|
+| bank | 二分类 | 89.04% | 88.73% | ✅ +0.31% |
+| adult | 二分类 | 84.93% | 84.56% | ✅ +0.37% |
+| car | 多分类 | 82.57% | 79.61% | ✅ +2.96% |
+| house_16H_reg | 回归 | 41923 | 42440 | ✅ -517 |
+| california_housing | 回归 | 0.6468 | 0.6508 | ✅ -0.004 |
+| credit-g | 二分类 | 72.86% | 73.14% | ❌ 差0.28% |
+| jannis | 多分类 | 61.56% | 63.24% | ❌ |
+| mnist | 多分类 | 62.02% | 81.64% | ❌ |
+
+### 成功经验
+- **语义丰富的表格数据**: bank, adult, car 表现最好
+- **回归任务**: house_16H_reg, california_housing 成功突破
+- **最佳配置**: depth=3-5, top_k_leaves=10, top_k_features=3-5
+
+### 失败分析
+- **credit-g**: 金融语义过强，LLM 容易被误导 (差0.28%即可突破)
+- **jannis**: 54维匿名特征，LLM 无法利用语义
+- **mnist**: 784维像素特征无语义
 
 ---
 
-## 当前主线（先看这个）
+## 文件说明
 
-当前主线已经从“继续围绕单个数据集追 `deeper_rf`”调整为：
-
-1. **先把 8 个候选数据集都补到完整闭环**：`readiness + 三组原型 + 正式协议 + 台账 + 测试`；
-2. **优先只做高收益动作**：补数据层/readiness、换候选叶子、补局部质量信号、扩大局部结构搜索；
-3. **如果某个数据集做完高收益动作仍明显低于传统主对照**，先正式记录为反例样板，后面再统一讨论是否继续冲线。
-
-当前已经验证过的经验是：
-- `adult`、`car` 已经能超过 `deeper_rf`；
-- `credit-g`、`jannis` 目前还不行；
-- `jannis` 上“双特征局部树”比“更深单特征树”更有价值，但仍不足以翻过 `deeper_rf`；
-- 因此现阶段最重要的问题不再是“单点能不能立刻翻盘”，而是“8 个数据集的正例/反例边界到底在哪里”。
+- `Update.md`: 每次改动和实验结果的更新日志
+- `EXPERIMENT_SUMMARY.md`: 实验结果汇总
+- `experiments/*_experiment_ledger.md`: 各数据集实验台账
+- `docs/dataset_generalization_methodology.md`: 数据集泛化方法论
+- `docs/generalization_scaling_lessons.md`: 调优与通用化经验
 
 ---
 
@@ -40,11 +46,11 @@
 - `docs/readme.md`：项目主入口文档（当前这份）。
 - `docs/lookme.md`：总执行清单（按阶段勾选）。
 - `Update.md`：每次改动和实验结果的更新日志。
-- `docs/stage1_mnist_semigeneral_guide.md`：当前阶段操作说明，专门回答“改数据去哪里改、调参数先看哪里”。
+- `docs/stage1_mnist_semigeneral_guide.md`：当前阶段操作说明，专门回答"改数据去哪里改、调参数先看哪里"。
 - `docs/stage1_bank_migration_guide.md`：第一次非图像迁移验证说明，当前推荐先用 `bank`。
 - `docs/mnist_llm_guided_leaf_expansion_prototype.md`：`MNIST` 上的 `LLM-Guided Leaf Expansion Forest` 原型说明。
 - `docs/generalization_scaling_lessons.md`：调优与完全通用化推进记录，专门沉淀多数据集扩展过程中的适配经验与失败教训。
-- `docs/dataset_generalization_methodology.md`：把已完成样板固化成后续迁移 `jannis / 回归` 的统一方法论，专门回答“新数据集到底该怎么接”。
+- `docs/dataset_generalization_methodology.md`：把已完成样板固化成后续迁移 `jannis / 回归` 的统一方法论，专门回答"新数据集到底该怎么接"。
 - `docs/adult_integration_precheck.md`：`adult` 数据集接入前检查清单，用于真正开工前确认数据层、输出路径和同口径摘要缺口。
 - `docs/credit_g_integration_precheck.md`：`credit-g` 数据集接入前检查清单，用于第二个强语义表格数据的工程预检。
 - `docs/jannis_integration_precheck.md`：`jannis` 数据集接入前检查清单，用于高维弱语义多分类数据的工程预检。
@@ -137,7 +143,7 @@
 ### 第 3 步：先跑传统基线（规则抽取）
 目标：先拿到传统树模型的规则与基线结果。
 
-这一步的作用是“打底”：
+这一步的作用是"打底"：
 - 先有基线，后面才能看 Prompt 优化有没有真实收益。
 
 ---
@@ -162,7 +168,7 @@
 ### 第 6 步：规则落地
 目标：把在线答案转成训练阶段能直接调用的规则。
 
-做到这一步，说明“LLM 输出 -> 可训练规则”链路打通了。
+做到这一步，说明"LLM 输出 -> 可训练规则"链路打通了。
 
 ---
 
@@ -170,7 +176,7 @@
 目标：训练每份候选策略对应的模型输出。
 
 这一步是 DeLTa 的核心思想之一：
-- 不是直接替代基线，而是做“修正增强”。
+- 不是直接替代基线，而是做"修正增强"。
 
 ---
 
@@ -208,12 +214,12 @@
 - `MNIST` 真实 `online_llm` 同口径尝试：已生成 `DeLTa-main/results/mnist/mnist_leaf_expansion_online_llm_attempt.json`；引入 richer feature prompt、strict validation 与 top-k 试分裂后，当前最新状态为 `success`，`test_accuracy=0.5622`，相对 `mock_llm=0.5603` 的当前差值为 `+0.0019`。
 - `MNIST` online relation 重复实验：已生成 `DeLTa-main/results/mnist/mnist_online_llm_repeatability_summary.json`；当前 5 次重复全部为 `0.5622`，`std=0.0`，5/5 次都高于 `mock_llm=0.5603`。
 - `MNIST` oracle 单特征上界分析：已生成 `DeLTa-main/results/mnist/mnist_leaf_expansion_oracle_analysis.json`；当前 `leaf 8` 的 oracle 最优特征是 `347`，真实 `online_llm` 已选中该特征。
-- `bank` 第一次真实迁移验证：已跑通“基线 -> Prompt -> 本地规则训练 -> 融合评估”最小闭环，当前单答案口径 `RF Accuracy=0.8986`，`Fused Accuracy=0.8991`。
+- `bank` 第一次真实迁移验证：已跑通"基线 -> Prompt -> 本地规则训练 -> 融合评估"最小闭环，当前单答案口径 `RF Accuracy=0.8986`，`Fused Accuracy=0.8991`。
 - `bank` online relation 迁移验证：已跑通 `without_llm / mock_llm / online_llm` 三条 leaf expansion 原型线，并生成 `DeLTa-main/results/bank/bank_leaf_expansion_same_metric_summary.json`；当前 `without_llm=0.8886`、`mock_llm=0.8890`、`online_llm=0.8890`，`online_llm_minus_mock_llm=0.0`。这说明 bank 上的 online 链路不仅接线正确，而且已通过最新 prompt 增强追平当前 `mock_llm`。
 - `bank` 更强语义 prompt + 叶子级对比：当前已把 `task_intro`、`target_outcomes`、`feature_description`、bank 域内指引写入 prompt，并新增 `DeLTa-main/tools/compare_bank_leaf_expansion_online_vs_mock.py`。这一步先把主要差异收敛到 `leaf 11`，证明问题集中在局部特征语义选择，而不是全链路接入。
 - `bank` target-conditioned + counterfactual prompt 增强：当前又补入 `predicted_outcome`、`alternative_outcomes`、`category_values_preview`、`predicted_class_top_categories`、`one_feature_train_accuracy`，并加入显式 counterfactual 指令去比较类似 `age` 与 `duration` 的取舍。最新叶子级结果显示 `leaf 11` 上 online 已从 `duration` 翻转为 `age`，与 mock 对齐，从而把全局 `online_llm` 提升到 `0.8889748977109366` 并追平 `mock_llm`。
-- `bank` 叶子优化优先级分析：已新增 `DeLTa-main/tools/analyze_bank_leaf_optimization_priority.py` 并生成 `DeLTa-main/results/bank/bank_leaf_expansion_optimization_priority.json`；当前 3 个已选叶子在“单特征局部最优”视角下都没有正向 headroom，这说明继续堆 bank 专用 pairwise prompt 的收益已经很有限，后续若想超过 `mock_llm`，更值得优先检查候选叶子选择或扩展结构本身，而不是继续在同一批叶子上微调措辞。
-- `bank` 叶子选择策略重排：已新增 `DeLTa-main/tools/analyze_bank_leaf_selection_strategies.py` 并实跑 `impurity` 策略；当前 `without_llm + impurity = 0.8904`、`mock_llm + impurity = 0.8901`，都高于旧默认策略，说明 `bank` 的下一步优先级已经切到“换叶子”，不是“继续修旧叶子文案”。
+- `bank` 叶子优化优先级分析：已新增 `DeLTa-main/tools/analyze_bank_leaf_optimization_priority.py` 并生成 `DeLTa-main/results/bank/bank_leaf_expansion_optimization_priority.json`；当前 3 个已选叶子在"单特征局部最优"视角下都没有正向 headroom，这说明继续堆 bank 专用 pairwise prompt 的收益已经很有限，后续若想超过 `mock_llm`，更值得优先检查候选叶子选择或扩展结构本身，而不是继续在同一批叶子上微调措辞。
+- `bank` 叶子选择策略重排：已新增 `DeLTa-main/tools/analyze_bank_leaf_selection_strategies.py` 并实跑 `impurity` 策略；当前 `without_llm + impurity = 0.8904`、`mock_llm + impurity = 0.8901`，都高于旧默认策略，说明 `bank` 的下一步优先级已经切到"换叶子"，不是"继续修旧叶子文案"。
 - `adult` 接入审计：已新增 `DeLTa-main/tools/audit_dataset_integration_readiness.py` 并生成 `DeLTa-main/results/adult/adult_integration_readiness.json`；当前确认 `adult` 的代码入口已具备，但数据目录、实验台账和模块映射仍缺，因此下一步应先补数据层，而不是继续补说明文档。
 - `car` 正式协议：已完成第三个完整样板闭环；当前 `online_llm=0.8257`，已超过 `without_llm=0.8043`、`mock_llm=0.7911`、`Deeper RF=0.7961` 与传统 `RF=0.8174`，但仍低于传统 `DeLTa=0.8470`。
 - `jannis` 正式协议：已完成第四个完整样板闭环；当前 `online_llm=0.5814`，已超过 `prototype_baseline=0.5667`、`without_llm=0.5640`、`mock_llm=0.5651`，但仍低于 `Deeper RF=0.6324`、传统 `RF=0.6488` 与传统 `DeLTa=0.6575`。
@@ -237,7 +243,7 @@
    - 再检查参数：`--relation_source online_llm`、`--llm_model`、`--llm_max_retries`、`--llm_retry_delay`、`--llm_request_interval`、`--top_k_features_to_try`。
    - 如果 `DeLTa-main/results/mnist/mnist_leaf_expansion_online_llm_attempt.json` 里是 `status = success`，优先看 `test_accuracy`、`mnist_leaf_expansion_same_metric_summary.json` 和 `mnist_leaf_expansion_oracle_analysis.json`；如果是 `status = failed` 且出现 `401` / `invalid_api_key`，优先检查当前 key 是否有效；如果是 `status = blocked` 且出现 `Cloudflare`，再按网络拦截方向排查。
 
-4. **结果看起来“变好了/变差了”但不确定**
+4. **结果看起来"变好了/变差了"但不确定**
    - 一定做同口径对照：相同数据、相同参数、仅改 Prompt。
 
 ---

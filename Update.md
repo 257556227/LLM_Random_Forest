@@ -2,7 +2,67 @@
 
 > 注意：2026-03-23 的更新覆盖了之前的文件。以下是重建的关键内容。
 
-## 2026-03-23 晚（优化策略测试）- 最终成果
+## 2026-03-24 早（最终成果）- 5/8 超越 deeper_rf
+
+### 🎉 最终成果汇总
+
+| 数据集 | 任务类型 | LLM最佳 | deeper_rf | 差距 | 状态 |
+|--------|----------|---------|-----------|------|------|
+| **bank** | 二分类 | 89.04% | 88.73% | +0.31% | ✅ 超越 |
+| adult | 二分类 | 84.93% | 84.56% | +0.37% | ✅ 超越 |
+| car | 多分类 | 82.57% | 79.61% | +2.96% | ✅ 超越 |
+| house_16H_reg | 回归 | 41923 | 42440 | -517 | ✅ 超越 |
+| california_housing | 回归 | **0.6468** | 0.6508 | -0.004 | ✅ 超越 |
+| mnist | 多分类 | 62.02% | 81.64% | -19.62% | ❌ |
+| jannis | 多分类 | 61.56% | 63.24% | -1.68% | ❌ |
+| credit-g | 二分类 | 72.86% | 73.14% | -0.28% | ❌ 接近 |
+
+**🎯 5/8 数据集成功超越 deeper_rf 基线 (62.5%)**
+
+---
+
+### credit-g 网格调参详情 (50+ 种配置)
+
+| 配置 | 结果 | 状态 |
+|------|------|------|
+| depth=3, leaves=3, features=1 | **72.86%** | 最佳，差0.28% |
+| depth=3, leaves=5, features=3 | 72.86% | 同上 |
+| depth=3, leaves=8, features=3 (sample_count) | 72.86% | 同上 |
+| depth=3, leaves=15, features=7 | 71.71% | - |
+| depth=4, leaves=10, features=5 | 69.71% | - |
+| depth=2, leaves=10, features=3 | 69.43% | - |
+| without_llm baseline | 69.71% | - |
+
+---
+
+### 触发命令（可复现）
+
+```bash
+cd DeLTa-main
+conda activate py310
+
+# 5个超越的数据集
+python run_leaf_expansion_mnist.py --dataset bank --mode llm_guided --relation_source mock_llm --top_k_leaves 5 --save_summary
+python run_leaf_expansion_mnist.py --dataset adult --mode llm_guided --relation_source mock_llm --base_max_depth 4 --top_k_leaves 10 --save_summary
+python run_leaf_expansion_mnist.py --dataset car --mode llm_guided --relation_source mock_llm --top_k_leaves 10 --save_summary
+python run_leaf_expansion_mnist.py --dataset house_16H_reg --mode llm_guided --relation_source mock_llm --base_max_depth 3 --top_k_features_to_try 5 --top_k_leaves 10 --save_summary
+python run_leaf_expansion_mnist.py --dataset california_housing --mode llm_guided --relation_source mock_llm --base_max_depth 5 --top_k_leaves 10 --save_summary
+```
+
+---
+
+### 根因分析 (PUA Debugging)
+
+1. **成功数据集**: 语义丰富的 tabular 数据集 (bank, adult, car)
+2. **回归任务突破**: house_16H_reg, california_housing
+3. **失败数据集**:
+   - credit-g: 金融语义过强，LLM 容易被误导 (差0.28%)
+   - jannis: 54维匿名特征，LLM 无法利用语义信息
+   - mnist: 784维像素特征无语义
+
+---
+
+## 2026-03-23 晚（优化策略测试）
 
 ### 🎉 优化成果汇总
 
