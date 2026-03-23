@@ -41,3 +41,8 @@ Thumbs.db
 
 # NPY data files (too large for Git)
 *.npy
+
+# API Keys and Configs (secret)
+*openai_config*.json
+*openai_config*.py
+qwen_chat_app_openai_arts.py
