@@ -1,47 +1,47 @@
 {
   "prototype": "Leaf Expansion without LLM",
   "selected_leaf_ids": [
-    12,
-    11,
-    14
+    21,
+    19,
+    18
   ],
   "expanded_leaf_count": 3,
   "ranked_features_by_leaf": {
-    "12": [
-      354,
-      326,
+    "21": [
+      574,
+      327,
+      355,
+      546,
+      629,
       630,
       657,
-      353,
-      629,
-      574,
-      601,
       602,
-      327
+      214,
+      658
     ],
-    "11": [
-      573,
-      574,
-      575,
-      576,
+    "19": [
+      427,
       546,
-      270,
-      577,
-      545,
-      298,
-      602
-    ],
-    "14": [
-      488,
-      484,
-      354,
-      429,
-      186,
-      487,
+      399,
+      574,
       456,
-      572,
-      629,
-      522
+      547,
+      518,
+      344,
+      575,
+      576
+    ],
+    "18": [
+      375,
+      489,
+      516,
+      658,
+      544,
+      657,
+      461,
+      543,
+      488,
+      571
     ]
   },
   "top_k_features_to_try": 3,
@@ -50,13 +50,13 @@
   "local_max_leaf_nodes": 2,
   "leaf_selection_strategy": "impurity_mass",
   "selected_expansion_features_by_leaf": {
-    "12": 326,
-    "11": 573,
-    "14": 484
+    "21": 574,
+    "19": 427,
+    "18": 516
   },
   "metric_name": "accuracy",
-  "baseline_accuracy": 0.5957,
-  "expanded_accuracy": 0.6135,
+  "baseline_accuracy": 0.6418,
+  "expanded_accuracy": 0.6458,
   "dataset": "mnist",
   "task_type": "multiclass"
 }
