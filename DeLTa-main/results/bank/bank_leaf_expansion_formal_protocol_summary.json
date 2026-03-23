@@ -1,0 +1,62 @@
+{
+  "protocol_name": "bank_leaf_expansion_formal_protocol_v1",
+  "dataset": "bank",
+  "generated_at_utc": "2026-03-23T02:50:00.000000+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "notes": [
+    "这份摘要把 bank 的 leaf expansion 原型与主链结果放到同一张协议表里",
+    "online_llm 已追平 mock_llm，但两者都低于 baseline_rf"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/bank/leaf_expansion_without_llm_summary.json",
+      "sample_count": 9043,
+      "test_accuracy": 0.8886,
+      "max_depth": 3
+    },
+    "deeper_rf": {
+      "source_mode": "bank depth=4 random_forest same-metric recompute",
+      "sample_count": 9043,
+      "test_accuracy": 0.8986,
+      "n_estimators": 100,
+      "max_depth": 4
+    },
+    "without_llm": {
+      "source_file": "results/bank/leaf_expansion_without_llm_summary.json",
+      "sample_count": 9043,
+      "test_accuracy": 0.8886,
+      "selected_leaf_ids": [5, 11, 13],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "mock_llm": {
+      "source_file": "results/bank/llm_guided_leaf_expansion_summary.json",
+      "sample_count": 9043,
+      "test_accuracy": 0.8890,
+      "selected_leaf_ids": [5, 11, 13],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "online_llm": {
+      "source_file": "results/bank/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 9043,
+      "test_accuracy": 0.8890,
+      "selected_leaf_ids": [5, 11, 13],
+      "leaf_selection_strategy": "impurity_mass",
+      "llm_model": "gpt-4o"
+    },
+    "traditional_rf": {
+      "source_file": "results/bank/RF_md20_ml50_tree15_full_cart_*.npy",
+      "sample_count": 9043,
+      "test_accuracy": 0.8255,
+      "n_estimators": 100,
+      "max_depth": 20
+    }
+  },
+  "comparisons": {
+    "without_llm_delta_vs_prototype_baseline": 0.0,
+    "online_llm_delta_vs_mock": 0.0,
+    "online_llm_delta_vs_without_llm": 0.0004,
+    "online_llm_delta_vs_deeper_rf": -0.0096,
+    "online_llm_delta_vs_traditional_rf": 0.0635
+  }
+}

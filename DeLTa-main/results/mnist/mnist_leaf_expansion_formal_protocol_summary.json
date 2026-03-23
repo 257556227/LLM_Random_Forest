@@ -1,0 +1,63 @@
+{
+  "protocol_name": "mnist_leaf_expansion_formal_protocol_v1",
+  "dataset": "mnist",
+  "generated_at_utc": "2026-03-23T02:50:00.000000+00:00",
+  "metric_scope": "same_test_accuracy_eval",
+  "strict_same_metric_protocol_ready": true,
+  "notes": [
+    "这份摘要把 mnist 的 leaf expansion 原型与主链结果放到同一张协议表里",
+    "当前环境无 CUDA，传统 DeLTa 主链使用 CPU 计算",
+    "分类任务以 accuracy 为主指标"
+  ],
+  "experiments": {
+    "prototype_baseline": {
+      "source_file": "results/mnist/leaf_expansion_without_llm_summary.json",
+      "sample_count": 10000,
+      "test_accuracy": 0.54,
+      "max_depth": 3
+    },
+    "deeper_rf": {
+      "source_mode": "mnist depth=4 random_forest same-metric recompute",
+      "sample_count": 10000,
+      "test_accuracy": 0.9025,
+      "n_estimators": 100,
+      "max_depth": 4
+    },
+    "without_llm": {
+      "source_file": "results/mnist/leaf_expansion_without_llm_summary.json",
+      "sample_count": 10000,
+      "test_accuracy": 0.54,
+      "selected_leaf_ids": [10, 8, 9],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "mock_llm": {
+      "source_file": "results/mnist/llm_guided_leaf_expansion_summary.json",
+      "sample_count": 10000,
+      "test_accuracy": 0.5603,
+      "selected_leaf_ids": [10, 8, 9],
+      "leaf_selection_strategy": "impurity_mass"
+    },
+    "online_llm": {
+      "source_file": "results/mnist/llm_guided_leaf_expansion_online_summary.json",
+      "sample_count": 10000,
+      "test_accuracy": 0.5622,
+      "selected_leaf_ids": [10, 8, 9],
+      "leaf_selection_strategy": "impurity_mass",
+      "llm_model": "gpt-4o"
+    },
+    "traditional_rf": {
+      "source_file": "results/mnist/RF_md20_ml100_tree15_full_cart_*.npy",
+      "sample_count": 10000,
+      "test_accuracy": 0.737,
+      "n_estimators": 100,
+      "max_depth": 20
+    }
+  },
+  "comparisons": {
+    "without_llm_rmse_delta_vs_prototype_baseline": 0.0,
+    "online_llm_rmse_delta_vs_mock": 0.0019,
+    "online_llm_rmse_delta_vs_without_llm": 0.0222,
+    "online_llm_rmse_delta_vs_deeper_rf": -0.3403,
+    "online_llm_rmse_delta_vs_traditional_rf": -0.1748
+  }
+}

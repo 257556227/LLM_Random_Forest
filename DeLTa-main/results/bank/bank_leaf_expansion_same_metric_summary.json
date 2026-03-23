@@ -1,9 +1,10 @@
 {
-  "protocol_name": "bank_leaf_expansion_same_metric_v1",
+  "protocol_name": "bank_leaf_expansion_same_metric_impurity_mass_v1",
   "dataset": "bank",
-  "generated_at_utc": "2026-03-08T11:11:28.715458+00:00",
+  "generated_at_utc": "2026-03-23T02:45:22.139403+00:00",
   "metric_scope": "same_test_accuracy_eval",
   "strict_same_metric_protocol_ready": true,
+  "leaf_selection_strategy": "impurity_mass",
   "experiments": {
     "baseline_rf": {
       "source_file": "results/bank/bank_md20_ml50_tree15.npy",
@@ -18,7 +19,8 @@
         5,
         11,
         13
-      ]
+      ],
+      "leaf_selection_strategy": "impurity_mass"
     },
     "llm_guided": {
       "source_mode": "run_leaf_expansion bank llm_guided mock_llm equivalent",
@@ -29,7 +31,8 @@
         11,
         13
       ],
-      "relation_source": "mock_llm"
+      "relation_source": "mock_llm",
+      "leaf_selection_strategy": "impurity_mass"
     },
     "online_llm": {
       "source_file": "results/bank/llm_guided_leaf_expansion_online_summary.json",

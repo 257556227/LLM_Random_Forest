@@ -1,7 +1,7 @@
 {
   "protocol_name": "mnist_leaf_expansion_same_metric_v1",
   "dataset": "mnist",
-  "generated_at_utc": "2026-03-08T09:50:40.603962+00:00",
+  "generated_at_utc": "2026-03-23T02:46:16.446200+00:00",
   "metric_scope": "same_test_accuracy_eval",
   "strict_same_metric_protocol_ready": true,
   "experiments": {
@@ -57,13 +57,13 @@
     "online_llm 已成功纳入同口径摘要。"
   ],
   "online_llm_attempt": {
-    "generated_at_utc": "2026-03-08T09:50:33.343437+00:00",
+    "generated_at_utc": "2026-03-09T17:04:27.655558+00:00",
     "relation_source": "online_llm",
     "status": "success",
     "summary_file": "results/mnist/llm_guided_leaf_expansion_online_summary.json",
     "baseline_accuracy": 0.4953,
     "test_accuracy": 0.5622,
     "llm_model": "gpt-4o",
-    "stdout_preview": "ature_id=546, pixel=(19,14), variance=0.189255, information_gain=0.032911, class_mean_spread=0.504794, predicted_class_mean_gap=0.310708\\nfeature_id=628, pixel=(22,12), variance=0.189222, information_gain=0.007477, class_mean_spread=0.572938, predicted_class_mean_gap=0.065146\\nPrefer features that are likely to create a useful one-feature split for this leaf.\\nReturn ONLY a JSON object with key ranked_features containing a ranked list of feature ids.\\nDo not add markdown fences, explanation, or any extra keys.\"\n  },\n  \"llm_raw_responses\": {\n    \"10\": \"{\\n    \\\"ranked_features\\\": [211, 210, 212, 238, 237, 326, 573, 602, 574, 546]\\n}\",\n    \"8\": \"{\\n    \\\"ranked_features\\\": [\\n        347,\\n        374,\\n        154,\\n        484,\\n        488,\\n        516,\\n        515,\\n        522,\\n        237,\\n        549\\n    ]\\n}\",\n    \"9\": \"{\\\"ranked_features\\\": [266, 265, 299, 271, 327, 261, 546, 573, 657, 628]}\"\n  },\n  \"llm_model\": \"gpt-4o\",\n  \"dataset\": \"mnist\",\n  \"task_type\": \"multiclass\"\n}\n"
+    "stdout_preview": "rder.\\nFor numeric features, prefer threshold-like splits that separate positive and negative classes with stable gain.\\nFor categorical features, prefer fields whose categories are likely to isolate different outcome groups or contact histories.\\nDo not infer spatial adjacency between feature ids.\\nTreat ordinal-encoded categorical ids as labels, not as meaningful magnitudes.\\nReturn ONLY a JSON object with key ranked_features containing a ranked list of feature ids.\\nDo not add markdown fences, explanation, or any extra keys.\"\n  },\n  \"llm_raw_responses\": {\n    \"10\": \"{\\n    \\\"ranked_features\\\": [\\n        211,\\n        210,\\n        212,\\n        238,\\n        237,\\n        326,\\n        573,\\n        602,\\n        574,\\n        546\\n    ]\\n}\",\n    \"8\": \"{\\\"ranked_features\\\": [347, 374, 484, 488, 516, 154, 515, 522, 237, 549]}\",\n    \"9\": \"{\\\"ranked_features\\\":[266,265,299,271,327,261,546,573,657,628]}\"\n  },\n  \"llm_model\": \"gpt-4o\",\n  \"dataset\": \"mnist\",\n  \"task_type\": \"multiclass\"\n}\n"
   }
 }
